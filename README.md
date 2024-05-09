@@ -5,9 +5,9 @@
 [![Docs][docs-godoc-svg]][docs-godoc-url]
 [![License][license-svg]][license-url]
 
-This is a Go framework for the Saviytn external Connector Framework using Go and Chi.
+This is the Saviynt External Connector Framework (ECF) for Go and Chi.
 
-It is based on [`oapi-codegen)`](https://github.com/deepmap/oapi-codegen).
+It is built with [`oapi-codegen)`](https://github.com/deepmap/oapi-codegen).
 
 For more information on `oapi-codegen`, see the following:
 
