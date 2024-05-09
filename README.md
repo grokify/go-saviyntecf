@@ -9,6 +9,17 @@ This is the Saviynt External Connector Framework (ECF) implemented in Go with Ch
 
 It is built with [`oapi-codegen)`](https://github.com/deepmap/oapi-codegen).
 
+## Rebuild
+
+To rebuild this module using an updated OpenAPI spec, do the following:
+
+```
+% curl -XGET https://raw.githubusercontent.com/saviynt/ExternalConnectorFramework-APISpec/main/spec/OpenAPISpec.yaml > openapi.yaml
+% go generate
+```
+
+This will create a new `server.gen.go` file using the config at `oapi-codegen.yaml`.
+
 For more information on `oapi-codegen`, see the following:
 
 1. [https://www.jvt.me/posts/2022/07/12/go-openapi-server/](https://www.jvt.me/posts/2022/07/12/go-openapi-server/)
