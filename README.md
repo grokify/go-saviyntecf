@@ -5,19 +5,21 @@
 [![Docs][docs-godoc-svg]][docs-godoc-url]
 [![License][license-svg]][license-url]
 
-This is the Saviynt External Connector Framework (ECF) implemented in Go with Chi.
+This is the [Saviynt External Connector Framework (ECF)](https://developers.saviynt.com/connectors/ecf) implemented in Go with Chi.
 
-It is built with [`oapi-codegen)`](https://github.com/deepmap/oapi-codegen).
+It is built with [`oapi-codegen`](https://github.com/deepmap/oapi-codegen).
 
 ## Usage
 
-To use `go-saviyntecf` to create an external connector, see [`go-saviyntecf-tutorial`](https://github.com/grokify/go-saviyntecf-tutorial).)
+To use `go-saviyntecf` to create a connector, see [`go-saviyntecf-tutorial`](https://github.com/grokify/go-saviyntecf-tutorial).
 
 ## Rebuild
 
 To rebuild this module using an updated OpenAPI spec, do the following:
 
 ```
+git clone https://github.com/grokify/go-saviyntecf
+cd grokify/go-saviyntecf
 curl -XGET https://raw.githubusercontent.com/saviynt/ExternalConnectorFramework-APISpec/main/spec/OpenAPISpec.yaml > openapi.yaml
 go generate
 ```
