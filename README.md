@@ -9,6 +9,10 @@ This is the Saviynt External Connector Framework (ECF) implemented in Go with Ch
 
 It is built with [`oapi-codegen)`](https://github.com/deepmap/oapi-codegen).
 
+## Usage
+
+To use `go-saviyntecf` to create an external connector, see [`go-saviyntecf-tutorial`](https://github.com/grokify/go-saviyntecf-tutorial).)
+
 ## Rebuild
 
 To rebuild this module using an updated OpenAPI spec, do the following:
