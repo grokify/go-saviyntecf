@@ -18,8 +18,8 @@ To use `go-saviyntecf` to create an external connector, see [`go-saviyntecf-tuto
 To rebuild this module using an updated OpenAPI spec, do the following:
 
 ```
-% curl -XGET https://raw.githubusercontent.com/saviynt/ExternalConnectorFramework-APISpec/main/spec/OpenAPISpec.yaml > openapi.yaml
-% go generate
+curl -XGET https://raw.githubusercontent.com/saviynt/ExternalConnectorFramework-APISpec/main/spec/OpenAPISpec.yaml > openapi.yaml
+go generate
 ```
 
 This will create a new `server.gen.go` file using the config at `oapi-codegen.yaml`.
