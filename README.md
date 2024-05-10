@@ -19,7 +19,7 @@ To rebuild this module using an updated OpenAPI spec, do the following:
 
 ```
 git clone https://github.com/grokify/go-saviyntecf
-cd grokify/go-saviyntecf
+cd go-saviyntecf
 curl -XGET https://raw.githubusercontent.com/saviynt/ExternalConnectorFramework-APISpec/main/spec/OpenAPISpec.yaml > openapi.yaml
 go generate
 ```
