@@ -99,8 +99,8 @@ type Accounts struct {
 		VALIDFROM                *string `json:"VALIDFROM,omitempty"`
 		VALIDTHROUGH             *string `json:"VALIDTHROUGH,omitempty"`
 	} `json:"accounts,omitempty"`
-	Count      *int    `json:"count,omitempty"`
 	Offset     *string `json:"offset,omitempty"`
+	Pagesize   *int    `json:"pagesize,omitempty"`
 	TotalCount *int    `json:"totalCount,omitempty"`
 }
 
@@ -121,7 +121,6 @@ type Createaccount struct {
 
 // Groups defines model for groups.
 type Groups struct {
-	Count  *int `json:"count,omitempty"`
 	Groups *[]struct {
 		CUSTOMPROPERTY1   *string    `json:"CUSTOMPROPERTY1,omitempty"`
 		CUSTOMPROPERTY10  *string    `json:"CUSTOMPROPERTY10,omitempty"`
@@ -177,11 +176,13 @@ type Groups struct {
 		Owners              *[]string `json:"owners,omitempty"`
 		Status              *string   `json:"status,omitempty"`
 	} `json:"groups,omitempty"`
+	Offset     *string `json:"offset,omitempty"`
+	Pagesize   *int    `json:"pagesize,omitempty"`
+	TotalCount *int    `json:"totalCount,omitempty"`
 }
 
 // Groupsmembership defines model for groupsmembership.
 type Groupsmembership struct {
-	Count            *int `json:"count,omitempty"`
 	GroupMemberships *[]struct {
 		AccountID     *int `json:"accountID,omitempty"`
 		EntitlementID *int `json:"entitlementID,omitempty"`
@@ -190,8 +191,9 @@ type Groupsmembership struct {
 
 // Roles defines model for roles.
 type Roles struct {
-	Count *int `json:"count,omitempty"`
-	Roles *[]struct {
+	Offset   *string `json:"offset,omitempty"`
+	Pagesize *int    `json:"pagesize,omitempty"`
+	Roles    *[]struct {
 		CUSTOMPROPERTY1   *string    `json:"CUSTOMPROPERTY1,omitempty"`
 		CUSTOMPROPERTY10  *string    `json:"CUSTOMPROPERTY10,omitempty"`
 		CUSTOMPROPERTY11  *string    `json:"CUSTOMPROPERTY11,omitempty"`
@@ -246,29 +248,15 @@ type Roles struct {
 		Owners              *[]string `json:"owners,omitempty"`
 		Status              *string   `json:"status,omitempty"`
 	} `json:"roles,omitempty"`
+	TotalCount *int `json:"totalCount,omitempty"`
 }
 
 // Rolesmembership defines model for rolesmembership.
 type Rolesmembership struct {
-	Count           *int `json:"count,omitempty"`
 	RoleMemberships *[]struct {
 		AccountID     *int `json:"accountID,omitempty"`
 		EntitlementID *int `json:"entitlementID,omitempty"`
 	} `json:"role_memberships,omitempty"`
-}
-
-// Updateaccount defines model for updateaccount.
-type Updateaccount struct {
-	Customproperty1   *string `json:"customproperty1,omitempty"`
-	Email             *string `json:"email,omitempty"`
-	EmployeeType      *string `json:"employeeType,omitempty"`
-	Firstname         *string `json:"firstname,omitempty"`
-	Jobcodedesc       *string `json:"jobcodedesc,omitempty"`
-	Lastname          *string `json:"lastname,omitempty"`
-	Manager           *string `json:"manager,omitempty"`
-	Middlename        *string `json:"middlename,omitempty"`
-	PreferedFirstName *string `json:"preferedFirstName,omitempty"`
-	Statuskey         *string `json:"statuskey,omitempty"`
 }
 
 // Updateuser defines model for updateuser.
@@ -287,8 +275,8 @@ type Updateuser struct {
 
 // Users defines model for users.
 type Users struct {
-	Count      *int    `json:"count,omitempty"`
 	Offset     *string `json:"offset,omitempty"`
+	Pagesize   *int    `json:"pagesize,omitempty"`
 	TotalCount *int    `json:"totalCount,omitempty"`
 	Users      *[]struct {
 		ACCOUNTEXPIRED    *int    `json:"ACCOUNTEXPIRED,omitempty"`
@@ -404,194 +392,175 @@ type Users struct {
 	} `json:"users,omitempty"`
 }
 
-// PostApiV1AccountsJSONBody defines parameters for PostApiV1Accounts.
-type PostApiV1AccountsJSONBody struct {
+// PostAccountsJSONBody defines parameters for PostAccounts.
+type PostAccountsJSONBody struct {
 	Fields *string `json:"fields,omitempty"`
 	Order  *string `json:"order,omitempty"`
 	Q      *string `json:"q,omitempty"`
 	Sort   *string `json:"sort,omitempty"`
 }
 
-// PostApiV1AccountsParams defines parameters for PostApiV1Accounts.
-type PostApiV1AccountsParams struct {
+// PostAccountsParams defines parameters for PostAccounts.
+type PostAccountsParams struct {
 	Offset   *int `form:"offset,omitempty" json:"offset,omitempty"`
 	Pagesize *int `form:"pagesize,omitempty" json:"pagesize,omitempty"`
 }
 
-// PutApiV1ChangePasswordJSONBody defines parameters for PutApiV1ChangePassword.
-type PutApiV1ChangePasswordJSONBody struct {
+// PutChangePasswordJSONBody defines parameters for PutChangePassword.
+type PutChangePasswordJSONBody struct {
 	AccountID *string `json:"accountID,omitempty"`
 	Password  *string `json:"password,omitempty"`
 }
 
-// PutApiV1EntitlementGroupAddAccessJSONBody defines parameters for PutApiV1EntitlementGroupAddAccess.
-type PutApiV1EntitlementGroupAddAccessJSONBody struct {
+// PutEntitlementgroupsJSONBody defines parameters for PutEntitlementgroups.
+type PutEntitlementgroupsJSONBody struct {
 	AccountID     *string `json:"accountID,omitempty"`
 	EntitlementID *string `json:"entitlementID,omitempty"`
 }
 
-// PutApiV1EntitlementGroupRemoveAccessJSONBody defines parameters for PutApiV1EntitlementGroupRemoveAccess.
-type PutApiV1EntitlementGroupRemoveAccessJSONBody struct {
+// PutEntitlementGroupRemoveAccessJSONBody defines parameters for PutEntitlementGroupRemoveAccess.
+type PutEntitlementGroupRemoveAccessJSONBody struct {
 	AccountID     *string `json:"accountID,omitempty"`
 	EntitlementID *string `json:"entitlementID,omitempty"`
 }
 
-// PutApiV1EntitlementRoleAddAccessJSONBody defines parameters for PutApiV1EntitlementRoleAddAccess.
-type PutApiV1EntitlementRoleAddAccessJSONBody struct {
+// PutEntitlementRoleAddAccessJSONBody defines parameters for PutEntitlementRoleAddAccess.
+type PutEntitlementRoleAddAccessJSONBody struct {
 	AccountID     *string `json:"accountID,omitempty"`
 	EntitlementID *string `json:"entitlementID,omitempty"`
 }
 
-// PutApiV1EntitlementRoleRemoveAccessJSONBody defines parameters for PutApiV1EntitlementRoleRemoveAccess.
-type PutApiV1EntitlementRoleRemoveAccessJSONBody struct {
+// PutEntitlementRoleRemoveAccessJSONBody defines parameters for PutEntitlementRoleRemoveAccess.
+type PutEntitlementRoleRemoveAccessJSONBody struct {
 	AccountID     *string `json:"accountID,omitempty"`
 	EntitlementID *string `json:"entitlementID,omitempty"`
 }
 
-// PostApiV1EntitlementsGroupsJSONBody defines parameters for PostApiV1EntitlementsGroups.
-type PostApiV1EntitlementsGroupsJSONBody struct {
+// PostEntitlementsGroupsJSONBody defines parameters for PostEntitlementsGroups.
+type PostEntitlementsGroupsJSONBody struct {
 	Fields *string `json:"fields,omitempty"`
 	Order  *string `json:"order,omitempty"`
 	Sort   *string `json:"sort,omitempty"`
 }
 
-// PostApiV1EntitlementsGroupsParams defines parameters for PostApiV1EntitlementsGroups.
-type PostApiV1EntitlementsGroupsParams struct {
+// PostEntitlementsGroupsParams defines parameters for PostEntitlementsGroups.
+type PostEntitlementsGroupsParams struct {
 	Offset   *int `form:"offset,omitempty" json:"offset,omitempty"`
 	Pagesize *int `form:"pagesize,omitempty" json:"pagesize,omitempty"`
 }
 
-// PostApiV1EntitlementsRolesJSONBody defines parameters for PostApiV1EntitlementsRoles.
-type PostApiV1EntitlementsRolesJSONBody struct {
+// PostEntitlementsRolesJSONBody defines parameters for PostEntitlementsRoles.
+type PostEntitlementsRolesJSONBody struct {
 	Fields *string `json:"fields,omitempty"`
 	Order  *string `json:"order,omitempty"`
 	Sort   *string `json:"sort,omitempty"`
 }
 
-// PostApiV1EntitlementsRolesParams defines parameters for PostApiV1EntitlementsRoles.
-type PostApiV1EntitlementsRolesParams struct {
+// PostEntitlementsRolesParams defines parameters for PostEntitlementsRoles.
+type PostEntitlementsRolesParams struct {
 	Offset   *int `form:"offset,omitempty" json:"offset,omitempty"`
 	Pagesize *int `form:"pagesize,omitempty" json:"pagesize,omitempty"`
 }
 
-// PatchApiV1UpdateAccountAccountID2JSONBody defines parameters for PatchApiV1UpdateAccountAccountID2.
-type PatchApiV1UpdateAccountAccountID2JSONBody struct {
-	Status *string `json:"status,omitempty"`
-}
+// PatchUpdateAccountJSONBody defines parameters for PatchUpdateAccount.
+type PatchUpdateAccountJSONBody = map[string]interface{}
 
-// PatchApiV1UpdateAccountAccountID3JSONBody defines parameters for PatchApiV1UpdateAccountAccountID3.
-type PatchApiV1UpdateAccountAccountID3JSONBody struct {
-	Status *string `json:"status,omitempty"`
-}
-
-// PostApiV1UsersJSONBody defines parameters for PostApiV1Users.
-type PostApiV1UsersJSONBody struct {
+// PostUsersJSONBody defines parameters for PostUsers.
+type PostUsersJSONBody struct {
 	Fields *string `json:"fields,omitempty"`
 	Order  *string `json:"order,omitempty"`
 	Sort   *string `json:"sort,omitempty"`
 }
 
-// PostApiV1UsersParams defines parameters for PostApiV1Users.
-type PostApiV1UsersParams struct {
+// PostUsersParams defines parameters for PostUsers.
+type PostUsersParams struct {
 	Offset   *int `form:"offset,omitempty" json:"offset,omitempty"`
 	Pagesize *int `form:"pagesize,omitempty" json:"pagesize,omitempty"`
 }
 
-// PostApiV1AccountsJSONRequestBody defines body for PostApiV1Accounts for application/json ContentType.
-type PostApiV1AccountsJSONRequestBody PostApiV1AccountsJSONBody
+// PostAccountsJSONRequestBody defines body for PostAccounts for application/json ContentType.
+type PostAccountsJSONRequestBody PostAccountsJSONBody
 
-// PutApiV1ChangePasswordJSONRequestBody defines body for PutApiV1ChangePassword for application/json ContentType.
-type PutApiV1ChangePasswordJSONRequestBody PutApiV1ChangePasswordJSONBody
+// PutChangePasswordJSONRequestBody defines body for PutChangePassword for application/json ContentType.
+type PutChangePasswordJSONRequestBody PutChangePasswordJSONBody
 
-// PostApiV1CreateAccountJSONRequestBody defines body for PostApiV1CreateAccount for application/json ContentType.
-type PostApiV1CreateAccountJSONRequestBody = Createaccount
+// PostCreateAccountJSONRequestBody defines body for PostCreateAccount for application/json ContentType.
+type PostCreateAccountJSONRequestBody = Createaccount
 
-// PutApiV1EntitlementGroupAddAccessJSONRequestBody defines body for PutApiV1EntitlementGroupAddAccess for application/json ContentType.
-type PutApiV1EntitlementGroupAddAccessJSONRequestBody PutApiV1EntitlementGroupAddAccessJSONBody
+// PutEntitlementgroupsJSONRequestBody defines body for PutEntitlementgroups for application/json ContentType.
+type PutEntitlementgroupsJSONRequestBody PutEntitlementgroupsJSONBody
 
-// PutApiV1EntitlementGroupRemoveAccessJSONRequestBody defines body for PutApiV1EntitlementGroupRemoveAccess for application/json ContentType.
-type PutApiV1EntitlementGroupRemoveAccessJSONRequestBody PutApiV1EntitlementGroupRemoveAccessJSONBody
+// PutEntitlementGroupRemoveAccessJSONRequestBody defines body for PutEntitlementGroupRemoveAccess for application/json ContentType.
+type PutEntitlementGroupRemoveAccessJSONRequestBody PutEntitlementGroupRemoveAccessJSONBody
 
-// PutApiV1EntitlementRoleAddAccessJSONRequestBody defines body for PutApiV1EntitlementRoleAddAccess for application/json ContentType.
-type PutApiV1EntitlementRoleAddAccessJSONRequestBody PutApiV1EntitlementRoleAddAccessJSONBody
+// PutEntitlementRoleAddAccessJSONRequestBody defines body for PutEntitlementRoleAddAccess for application/json ContentType.
+type PutEntitlementRoleAddAccessJSONRequestBody PutEntitlementRoleAddAccessJSONBody
 
-// PutApiV1EntitlementRoleRemoveAccessJSONRequestBody defines body for PutApiV1EntitlementRoleRemoveAccess for application/json ContentType.
-type PutApiV1EntitlementRoleRemoveAccessJSONRequestBody PutApiV1EntitlementRoleRemoveAccessJSONBody
+// PutEntitlementRoleRemoveAccessJSONRequestBody defines body for PutEntitlementRoleRemoveAccess for application/json ContentType.
+type PutEntitlementRoleRemoveAccessJSONRequestBody PutEntitlementRoleRemoveAccessJSONBody
 
-// PostApiV1EntitlementsGroupsJSONRequestBody defines body for PostApiV1EntitlementsGroups for application/json ContentType.
-type PostApiV1EntitlementsGroupsJSONRequestBody PostApiV1EntitlementsGroupsJSONBody
+// PostEntitlementsGroupsJSONRequestBody defines body for PostEntitlementsGroups for application/json ContentType.
+type PostEntitlementsGroupsJSONRequestBody PostEntitlementsGroupsJSONBody
 
-// PostApiV1EntitlementsRolesJSONRequestBody defines body for PostApiV1EntitlementsRoles for application/json ContentType.
-type PostApiV1EntitlementsRolesJSONRequestBody PostApiV1EntitlementsRolesJSONBody
+// PostEntitlementsRolesJSONRequestBody defines body for PostEntitlementsRoles for application/json ContentType.
+type PostEntitlementsRolesJSONRequestBody PostEntitlementsRolesJSONBody
 
-// PatchApiV1UpdateAccountAccountID1JSONRequestBody defines body for PatchApiV1UpdateAccountAccountID1 for application/json ContentType.
-type PatchApiV1UpdateAccountAccountID1JSONRequestBody = Updateaccount
+// PatchUpdateAccountJSONRequestBody defines body for PatchUpdateAccount for application/json ContentType.
+type PatchUpdateAccountJSONRequestBody = PatchUpdateAccountJSONBody
 
-// PatchApiV1UpdateAccountAccountID2JSONRequestBody defines body for PatchApiV1UpdateAccountAccountID2 for application/json ContentType.
-type PatchApiV1UpdateAccountAccountID2JSONRequestBody PatchApiV1UpdateAccountAccountID2JSONBody
+// PatchUpdateUserJSONRequestBody defines body for PatchUpdateUser for application/json ContentType.
+type PatchUpdateUserJSONRequestBody = Updateuser
 
-// PatchApiV1UpdateAccountAccountID3JSONRequestBody defines body for PatchApiV1UpdateAccountAccountID3 for application/json ContentType.
-type PatchApiV1UpdateAccountAccountID3JSONRequestBody PatchApiV1UpdateAccountAccountID3JSONBody
-
-// PatchApiV1UpdateUserUserNameJSONRequestBody defines body for PatchApiV1UpdateUserUserName for application/json ContentType.
-type PatchApiV1UpdateUserUserNameJSONRequestBody = Updateuser
-
-// PostApiV1UsersJSONRequestBody defines body for PostApiV1Users for application/json ContentType.
-type PostApiV1UsersJSONRequestBody PostApiV1UsersJSONBody
+// PostUsersJSONRequestBody defines body for PostUsers for application/json ContentType.
+type PostUsersJSONRequestBody PostUsersJSONBody
 
 // ServerInterface represents all server handlers.
 type ServerInterface interface {
 	// This API returns the list of accounts
-	// (POST /api/v1/accounts)
-	PostApiV1Accounts(w http.ResponseWriter, r *http.Request, params PostApiV1AccountsParams)
+	// (POST /accounts)
+	PostAccounts(w http.ResponseWriter, r *http.Request, params PostAccountsParams)
 	// This API returns the list of account entitlement association for entitlement type group
-	// (GET /api/v1/accounts/group_memberships)
-	GetApiV1AccountsGroupMemberships(w http.ResponseWriter, r *http.Request)
+	// (GET /accounts/group_memberships)
+	GetAccountsGroupMemberships(w http.ResponseWriter, r *http.Request)
 	// This API returns the list of account entitlement association for entitlement type role
-	// (GET /api/v1/accounts/role_memberships)
-	GetApiV1AccountsRoleMemberships(w http.ResponseWriter, r *http.Request)
+	// (GET /accounts/role_memberships)
+	GetAccountsRoleMemberships(w http.ResponseWriter, r *http.Request)
 	// This API can be used to change password of an account
-	// (PUT /api/v1/changePassword)
-	PutApiV1ChangePassword(w http.ResponseWriter, r *http.Request)
+	// (PUT /changePassword)
+	PutChangePassword(w http.ResponseWriter, r *http.Request)
 	// This API creates an account
-	// (POST /api/v1/createAccount)
-	PostApiV1CreateAccount(w http.ResponseWriter, r *http.Request)
+	// (POST /createAccount)
+	PostCreateAccount(w http.ResponseWriter, r *http.Request)
 	// This API grants group access to an account
-	// (PUT /api/v1/entitlement/group/addAccess)
-	PutApiV1EntitlementGroupAddAccess(w http.ResponseWriter, r *http.Request)
+	// (PUT /entitlement/group/addAccess)
+	PutEntitlementgroups(w http.ResponseWriter, r *http.Request)
 	// This API removes group access from an account
-	// (PUT /api/v1/entitlement/group/removeAccess)
-	PutApiV1EntitlementGroupRemoveAccess(w http.ResponseWriter, r *http.Request)
+	// (PUT /entitlement/group/removeAccess)
+	PutEntitlementGroupRemoveAccess(w http.ResponseWriter, r *http.Request)
 	// This API grants role access to an account
-	// (PUT /api/v1/entitlement/role/addAccess)
-	PutApiV1EntitlementRoleAddAccess(w http.ResponseWriter, r *http.Request)
+	// (PUT /entitlement/role/addAccess)
+	PutEntitlementRoleAddAccess(w http.ResponseWriter, r *http.Request)
 	// This API removes role access from an account
-	// (PUT /api/v1/entitlement/role/removeAccess)
-	PutApiV1EntitlementRoleRemoveAccess(w http.ResponseWriter, r *http.Request)
+	// (PUT /entitlement/role/removeAccess)
+	PutEntitlementRoleRemoveAccess(w http.ResponseWriter, r *http.Request)
 	// This API returns the list of group type entitlements
-	// (POST /api/v1/entitlements/groups)
-	PostApiV1EntitlementsGroups(w http.ResponseWriter, r *http.Request, params PostApiV1EntitlementsGroupsParams)
+	// (POST /entitlements/groups)
+	PostEntitlementsGroups(w http.ResponseWriter, r *http.Request, params PostEntitlementsGroupsParams)
 	// This API returns the list of role type entitlements
-	// (POST /api/v1/entitlements/roles)
-	PostApiV1EntitlementsRoles(w http.ResponseWriter, r *http.Request, params PostApiV1EntitlementsRolesParams)
+	// (POST /entitlements/roles)
+	PostEntitlementsRoles(w http.ResponseWriter, r *http.Request, params PostEntitlementsRolesParams)
 	// This API deletes an account
-	// (DELETE /api/v1/removeAccount/{accountID})
-	DeleteApiV1RemoveAccountAccountID(w http.ResponseWriter, r *http.Request, accountID string)
+	// (DELETE /removeAccount/{accountID})
+	DeleteRemoveAccount(w http.ResponseWriter, r *http.Request, accountID string)
 	// This API updates an account
-	// (PATCH /api/v1/updateAccount/{accountID1})
-	PatchApiV1UpdateAccountAccountID1(w http.ResponseWriter, r *http.Request, accountID1 string)
-	// This API enables an account
-	// (PATCH /api/v1/updateAccount/{accountID2})
-	PatchApiV1UpdateAccountAccountID2(w http.ResponseWriter, r *http.Request, accountID2 string)
-	// This API disables an account
-	// (PATCH /api/v1/updateAccount/{accountID3})
-	PatchApiV1UpdateAccountAccountID3(w http.ResponseWriter, r *http.Request, accountID3 string)
+	// (PATCH /updateAccount/{accountID})
+	PatchUpdateAccount(w http.ResponseWriter, r *http.Request, accountID string)
 	// This API updates a user
-	// (PATCH /api/v1/updateUser/{userName})
-	PatchApiV1UpdateUserUserName(w http.ResponseWriter, r *http.Request, userName string)
+	// (PATCH /updateUser/{userName})
+	PatchUpdateUser(w http.ResponseWriter, r *http.Request, userName string)
 	// This API returns the list of users
-	// (POST /api/v1/users)
-	PostApiV1Users(w http.ResponseWriter, r *http.Request, params PostApiV1UsersParams)
+	// (POST /users)
+	PostUsers(w http.ResponseWriter, r *http.Request, params PostUsersParams)
 }
 
 // Unimplemented server implementation that returns http.StatusNotImplemented for each endpoint.
@@ -599,104 +568,92 @@ type ServerInterface interface {
 type Unimplemented struct{}
 
 // This API returns the list of accounts
-// (POST /api/v1/accounts)
-func (_ Unimplemented) PostApiV1Accounts(w http.ResponseWriter, r *http.Request, params PostApiV1AccountsParams) {
+// (POST /accounts)
+func (_ Unimplemented) PostAccounts(w http.ResponseWriter, r *http.Request, params PostAccountsParams) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
 // This API returns the list of account entitlement association for entitlement type group
-// (GET /api/v1/accounts/group_memberships)
-func (_ Unimplemented) GetApiV1AccountsGroupMemberships(w http.ResponseWriter, r *http.Request) {
+// (GET /accounts/group_memberships)
+func (_ Unimplemented) GetAccountsGroupMemberships(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
 // This API returns the list of account entitlement association for entitlement type role
-// (GET /api/v1/accounts/role_memberships)
-func (_ Unimplemented) GetApiV1AccountsRoleMemberships(w http.ResponseWriter, r *http.Request) {
+// (GET /accounts/role_memberships)
+func (_ Unimplemented) GetAccountsRoleMemberships(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
 // This API can be used to change password of an account
-// (PUT /api/v1/changePassword)
-func (_ Unimplemented) PutApiV1ChangePassword(w http.ResponseWriter, r *http.Request) {
+// (PUT /changePassword)
+func (_ Unimplemented) PutChangePassword(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
 // This API creates an account
-// (POST /api/v1/createAccount)
-func (_ Unimplemented) PostApiV1CreateAccount(w http.ResponseWriter, r *http.Request) {
+// (POST /createAccount)
+func (_ Unimplemented) PostCreateAccount(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
 // This API grants group access to an account
-// (PUT /api/v1/entitlement/group/addAccess)
-func (_ Unimplemented) PutApiV1EntitlementGroupAddAccess(w http.ResponseWriter, r *http.Request) {
+// (PUT /entitlement/group/addAccess)
+func (_ Unimplemented) PutEntitlementgroups(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
 // This API removes group access from an account
-// (PUT /api/v1/entitlement/group/removeAccess)
-func (_ Unimplemented) PutApiV1EntitlementGroupRemoveAccess(w http.ResponseWriter, r *http.Request) {
+// (PUT /entitlement/group/removeAccess)
+func (_ Unimplemented) PutEntitlementGroupRemoveAccess(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
 // This API grants role access to an account
-// (PUT /api/v1/entitlement/role/addAccess)
-func (_ Unimplemented) PutApiV1EntitlementRoleAddAccess(w http.ResponseWriter, r *http.Request) {
+// (PUT /entitlement/role/addAccess)
+func (_ Unimplemented) PutEntitlementRoleAddAccess(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
 // This API removes role access from an account
-// (PUT /api/v1/entitlement/role/removeAccess)
-func (_ Unimplemented) PutApiV1EntitlementRoleRemoveAccess(w http.ResponseWriter, r *http.Request) {
+// (PUT /entitlement/role/removeAccess)
+func (_ Unimplemented) PutEntitlementRoleRemoveAccess(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
 // This API returns the list of group type entitlements
-// (POST /api/v1/entitlements/groups)
-func (_ Unimplemented) PostApiV1EntitlementsGroups(w http.ResponseWriter, r *http.Request, params PostApiV1EntitlementsGroupsParams) {
+// (POST /entitlements/groups)
+func (_ Unimplemented) PostEntitlementsGroups(w http.ResponseWriter, r *http.Request, params PostEntitlementsGroupsParams) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
 // This API returns the list of role type entitlements
-// (POST /api/v1/entitlements/roles)
-func (_ Unimplemented) PostApiV1EntitlementsRoles(w http.ResponseWriter, r *http.Request, params PostApiV1EntitlementsRolesParams) {
+// (POST /entitlements/roles)
+func (_ Unimplemented) PostEntitlementsRoles(w http.ResponseWriter, r *http.Request, params PostEntitlementsRolesParams) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
 // This API deletes an account
-// (DELETE /api/v1/removeAccount/{accountID})
-func (_ Unimplemented) DeleteApiV1RemoveAccountAccountID(w http.ResponseWriter, r *http.Request, accountID string) {
+// (DELETE /removeAccount/{accountID})
+func (_ Unimplemented) DeleteRemoveAccount(w http.ResponseWriter, r *http.Request, accountID string) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
 // This API updates an account
-// (PATCH /api/v1/updateAccount/{accountID1})
-func (_ Unimplemented) PatchApiV1UpdateAccountAccountID1(w http.ResponseWriter, r *http.Request, accountID1 string) {
-	w.WriteHeader(http.StatusNotImplemented)
-}
-
-// This API enables an account
-// (PATCH /api/v1/updateAccount/{accountID2})
-func (_ Unimplemented) PatchApiV1UpdateAccountAccountID2(w http.ResponseWriter, r *http.Request, accountID2 string) {
-	w.WriteHeader(http.StatusNotImplemented)
-}
-
-// This API disables an account
-// (PATCH /api/v1/updateAccount/{accountID3})
-func (_ Unimplemented) PatchApiV1UpdateAccountAccountID3(w http.ResponseWriter, r *http.Request, accountID3 string) {
+// (PATCH /updateAccount/{accountID})
+func (_ Unimplemented) PatchUpdateAccount(w http.ResponseWriter, r *http.Request, accountID string) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
 // This API updates a user
-// (PATCH /api/v1/updateUser/{userName})
-func (_ Unimplemented) PatchApiV1UpdateUserUserName(w http.ResponseWriter, r *http.Request, userName string) {
+// (PATCH /updateUser/{userName})
+func (_ Unimplemented) PatchUpdateUser(w http.ResponseWriter, r *http.Request, userName string) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
 // This API returns the list of users
-// (POST /api/v1/users)
-func (_ Unimplemented) PostApiV1Users(w http.ResponseWriter, r *http.Request, params PostApiV1UsersParams) {
+// (POST /users)
+func (_ Unimplemented) PostUsers(w http.ResponseWriter, r *http.Request, params PostUsersParams) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
@@ -709,8 +666,8 @@ type ServerInterfaceWrapper struct {
 
 type MiddlewareFunc func(http.Handler) http.Handler
 
-// PostApiV1Accounts operation middleware
-func (siw *ServerInterfaceWrapper) PostApiV1Accounts(w http.ResponseWriter, r *http.Request) {
+// PostAccounts operation middleware
+func (siw *ServerInterfaceWrapper) PostAccounts(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	var err error
@@ -718,7 +675,7 @@ func (siw *ServerInterfaceWrapper) PostApiV1Accounts(w http.ResponseWriter, r *h
 	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
 
 	// Parameter object where we will unmarshal all parameters from the context
-	var params PostApiV1AccountsParams
+	var params PostAccountsParams
 
 	// ------------- Optional query parameter "offset" -------------
 
@@ -737,7 +694,7 @@ func (siw *ServerInterfaceWrapper) PostApiV1Accounts(w http.ResponseWriter, r *h
 	}
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PostApiV1Accounts(w, r, params)
+		siw.Handler.PostAccounts(w, r, params)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -747,14 +704,14 @@ func (siw *ServerInterfaceWrapper) PostApiV1Accounts(w http.ResponseWriter, r *h
 	handler.ServeHTTP(w, r.WithContext(ctx))
 }
 
-// GetApiV1AccountsGroupMemberships operation middleware
-func (siw *ServerInterfaceWrapper) GetApiV1AccountsGroupMemberships(w http.ResponseWriter, r *http.Request) {
+// GetAccountsGroupMemberships operation middleware
+func (siw *ServerInterfaceWrapper) GetAccountsGroupMemberships(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.GetApiV1AccountsGroupMemberships(w, r)
+		siw.Handler.GetAccountsGroupMemberships(w, r)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -764,14 +721,14 @@ func (siw *ServerInterfaceWrapper) GetApiV1AccountsGroupMemberships(w http.Respo
 	handler.ServeHTTP(w, r.WithContext(ctx))
 }
 
-// GetApiV1AccountsRoleMemberships operation middleware
-func (siw *ServerInterfaceWrapper) GetApiV1AccountsRoleMemberships(w http.ResponseWriter, r *http.Request) {
+// GetAccountsRoleMemberships operation middleware
+func (siw *ServerInterfaceWrapper) GetAccountsRoleMemberships(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.GetApiV1AccountsRoleMemberships(w, r)
+		siw.Handler.GetAccountsRoleMemberships(w, r)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -781,14 +738,14 @@ func (siw *ServerInterfaceWrapper) GetApiV1AccountsRoleMemberships(w http.Respon
 	handler.ServeHTTP(w, r.WithContext(ctx))
 }
 
-// PutApiV1ChangePassword operation middleware
-func (siw *ServerInterfaceWrapper) PutApiV1ChangePassword(w http.ResponseWriter, r *http.Request) {
+// PutChangePassword operation middleware
+func (siw *ServerInterfaceWrapper) PutChangePassword(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PutApiV1ChangePassword(w, r)
+		siw.Handler.PutChangePassword(w, r)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -798,14 +755,14 @@ func (siw *ServerInterfaceWrapper) PutApiV1ChangePassword(w http.ResponseWriter,
 	handler.ServeHTTP(w, r.WithContext(ctx))
 }
 
-// PostApiV1CreateAccount operation middleware
-func (siw *ServerInterfaceWrapper) PostApiV1CreateAccount(w http.ResponseWriter, r *http.Request) {
+// PostCreateAccount operation middleware
+func (siw *ServerInterfaceWrapper) PostCreateAccount(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PostApiV1CreateAccount(w, r)
+		siw.Handler.PostCreateAccount(w, r)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -815,14 +772,14 @@ func (siw *ServerInterfaceWrapper) PostApiV1CreateAccount(w http.ResponseWriter,
 	handler.ServeHTTP(w, r.WithContext(ctx))
 }
 
-// PutApiV1EntitlementGroupAddAccess operation middleware
-func (siw *ServerInterfaceWrapper) PutApiV1EntitlementGroupAddAccess(w http.ResponseWriter, r *http.Request) {
+// PutEntitlementgroups operation middleware
+func (siw *ServerInterfaceWrapper) PutEntitlementgroups(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PutApiV1EntitlementGroupAddAccess(w, r)
+		siw.Handler.PutEntitlementgroups(w, r)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -832,14 +789,14 @@ func (siw *ServerInterfaceWrapper) PutApiV1EntitlementGroupAddAccess(w http.Resp
 	handler.ServeHTTP(w, r.WithContext(ctx))
 }
 
-// PutApiV1EntitlementGroupRemoveAccess operation middleware
-func (siw *ServerInterfaceWrapper) PutApiV1EntitlementGroupRemoveAccess(w http.ResponseWriter, r *http.Request) {
+// PutEntitlementGroupRemoveAccess operation middleware
+func (siw *ServerInterfaceWrapper) PutEntitlementGroupRemoveAccess(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PutApiV1EntitlementGroupRemoveAccess(w, r)
+		siw.Handler.PutEntitlementGroupRemoveAccess(w, r)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -849,14 +806,14 @@ func (siw *ServerInterfaceWrapper) PutApiV1EntitlementGroupRemoveAccess(w http.R
 	handler.ServeHTTP(w, r.WithContext(ctx))
 }
 
-// PutApiV1EntitlementRoleAddAccess operation middleware
-func (siw *ServerInterfaceWrapper) PutApiV1EntitlementRoleAddAccess(w http.ResponseWriter, r *http.Request) {
+// PutEntitlementRoleAddAccess operation middleware
+func (siw *ServerInterfaceWrapper) PutEntitlementRoleAddAccess(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PutApiV1EntitlementRoleAddAccess(w, r)
+		siw.Handler.PutEntitlementRoleAddAccess(w, r)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -866,14 +823,14 @@ func (siw *ServerInterfaceWrapper) PutApiV1EntitlementRoleAddAccess(w http.Respo
 	handler.ServeHTTP(w, r.WithContext(ctx))
 }
 
-// PutApiV1EntitlementRoleRemoveAccess operation middleware
-func (siw *ServerInterfaceWrapper) PutApiV1EntitlementRoleRemoveAccess(w http.ResponseWriter, r *http.Request) {
+// PutEntitlementRoleRemoveAccess operation middleware
+func (siw *ServerInterfaceWrapper) PutEntitlementRoleRemoveAccess(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PutApiV1EntitlementRoleRemoveAccess(w, r)
+		siw.Handler.PutEntitlementRoleRemoveAccess(w, r)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -883,8 +840,8 @@ func (siw *ServerInterfaceWrapper) PutApiV1EntitlementRoleRemoveAccess(w http.Re
 	handler.ServeHTTP(w, r.WithContext(ctx))
 }
 
-// PostApiV1EntitlementsGroups operation middleware
-func (siw *ServerInterfaceWrapper) PostApiV1EntitlementsGroups(w http.ResponseWriter, r *http.Request) {
+// PostEntitlementsGroups operation middleware
+func (siw *ServerInterfaceWrapper) PostEntitlementsGroups(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	var err error
@@ -892,7 +849,7 @@ func (siw *ServerInterfaceWrapper) PostApiV1EntitlementsGroups(w http.ResponseWr
 	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
 
 	// Parameter object where we will unmarshal all parameters from the context
-	var params PostApiV1EntitlementsGroupsParams
+	var params PostEntitlementsGroupsParams
 
 	// ------------- Optional query parameter "offset" -------------
 
@@ -911,7 +868,7 @@ func (siw *ServerInterfaceWrapper) PostApiV1EntitlementsGroups(w http.ResponseWr
 	}
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PostApiV1EntitlementsGroups(w, r, params)
+		siw.Handler.PostEntitlementsGroups(w, r, params)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -921,8 +878,8 @@ func (siw *ServerInterfaceWrapper) PostApiV1EntitlementsGroups(w http.ResponseWr
 	handler.ServeHTTP(w, r.WithContext(ctx))
 }
 
-// PostApiV1EntitlementsRoles operation middleware
-func (siw *ServerInterfaceWrapper) PostApiV1EntitlementsRoles(w http.ResponseWriter, r *http.Request) {
+// PostEntitlementsRoles operation middleware
+func (siw *ServerInterfaceWrapper) PostEntitlementsRoles(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	var err error
@@ -930,7 +887,7 @@ func (siw *ServerInterfaceWrapper) PostApiV1EntitlementsRoles(w http.ResponseWri
 	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
 
 	// Parameter object where we will unmarshal all parameters from the context
-	var params PostApiV1EntitlementsRolesParams
+	var params PostEntitlementsRolesParams
 
 	// ------------- Optional query parameter "offset" -------------
 
@@ -949,7 +906,7 @@ func (siw *ServerInterfaceWrapper) PostApiV1EntitlementsRoles(w http.ResponseWri
 	}
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PostApiV1EntitlementsRoles(w, r, params)
+		siw.Handler.PostEntitlementsRoles(w, r, params)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -959,8 +916,8 @@ func (siw *ServerInterfaceWrapper) PostApiV1EntitlementsRoles(w http.ResponseWri
 	handler.ServeHTTP(w, r.WithContext(ctx))
 }
 
-// DeleteApiV1RemoveAccountAccountID operation middleware
-func (siw *ServerInterfaceWrapper) DeleteApiV1RemoveAccountAccountID(w http.ResponseWriter, r *http.Request) {
+// DeleteRemoveAccount operation middleware
+func (siw *ServerInterfaceWrapper) DeleteRemoveAccount(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	var err error
@@ -977,7 +934,7 @@ func (siw *ServerInterfaceWrapper) DeleteApiV1RemoveAccountAccountID(w http.Resp
 	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.DeleteApiV1RemoveAccountAccountID(w, r, accountID)
+		siw.Handler.DeleteRemoveAccount(w, r, accountID)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -987,25 +944,25 @@ func (siw *ServerInterfaceWrapper) DeleteApiV1RemoveAccountAccountID(w http.Resp
 	handler.ServeHTTP(w, r.WithContext(ctx))
 }
 
-// PatchApiV1UpdateAccountAccountID1 operation middleware
-func (siw *ServerInterfaceWrapper) PatchApiV1UpdateAccountAccountID1(w http.ResponseWriter, r *http.Request) {
+// PatchUpdateAccount operation middleware
+func (siw *ServerInterfaceWrapper) PatchUpdateAccount(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	var err error
 
-	// ------------- Path parameter "accountID1" -------------
-	var accountID1 string
+	// ------------- Path parameter "accountID" -------------
+	var accountID string
 
-	err = runtime.BindStyledParameterWithOptions("simple", "accountID1", chi.URLParam(r, "accountID1"), &accountID1, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationPath, Explode: false, Required: true})
+	err = runtime.BindStyledParameterWithOptions("simple", "accountID", chi.URLParam(r, "accountID"), &accountID, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationPath, Explode: false, Required: true})
 	if err != nil {
-		siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "accountID1", Err: err})
+		siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "accountID", Err: err})
 		return
 	}
 
 	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PatchApiV1UpdateAccountAccountID1(w, r, accountID1)
+		siw.Handler.PatchUpdateAccount(w, r, accountID)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -1015,64 +972,8 @@ func (siw *ServerInterfaceWrapper) PatchApiV1UpdateAccountAccountID1(w http.Resp
 	handler.ServeHTTP(w, r.WithContext(ctx))
 }
 
-// PatchApiV1UpdateAccountAccountID2 operation middleware
-func (siw *ServerInterfaceWrapper) PatchApiV1UpdateAccountAccountID2(w http.ResponseWriter, r *http.Request) {
-	ctx := r.Context()
-
-	var err error
-
-	// ------------- Path parameter "accountID2" -------------
-	var accountID2 string
-
-	err = runtime.BindStyledParameterWithOptions("simple", "accountID2", chi.URLParam(r, "accountID2"), &accountID2, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationPath, Explode: false, Required: true})
-	if err != nil {
-		siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "accountID2", Err: err})
-		return
-	}
-
-	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
-
-	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PatchApiV1UpdateAccountAccountID2(w, r, accountID2)
-	}))
-
-	for _, middleware := range siw.HandlerMiddlewares {
-		handler = middleware(handler)
-	}
-
-	handler.ServeHTTP(w, r.WithContext(ctx))
-}
-
-// PatchApiV1UpdateAccountAccountID3 operation middleware
-func (siw *ServerInterfaceWrapper) PatchApiV1UpdateAccountAccountID3(w http.ResponseWriter, r *http.Request) {
-	ctx := r.Context()
-
-	var err error
-
-	// ------------- Path parameter "accountID3" -------------
-	var accountID3 string
-
-	err = runtime.BindStyledParameterWithOptions("simple", "accountID3", chi.URLParam(r, "accountID3"), &accountID3, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationPath, Explode: false, Required: true})
-	if err != nil {
-		siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "accountID3", Err: err})
-		return
-	}
-
-	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
-
-	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PatchApiV1UpdateAccountAccountID3(w, r, accountID3)
-	}))
-
-	for _, middleware := range siw.HandlerMiddlewares {
-		handler = middleware(handler)
-	}
-
-	handler.ServeHTTP(w, r.WithContext(ctx))
-}
-
-// PatchApiV1UpdateUserUserName operation middleware
-func (siw *ServerInterfaceWrapper) PatchApiV1UpdateUserUserName(w http.ResponseWriter, r *http.Request) {
+// PatchUpdateUser operation middleware
+func (siw *ServerInterfaceWrapper) PatchUpdateUser(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	var err error
@@ -1089,7 +990,7 @@ func (siw *ServerInterfaceWrapper) PatchApiV1UpdateUserUserName(w http.ResponseW
 	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PatchApiV1UpdateUserUserName(w, r, userName)
+		siw.Handler.PatchUpdateUser(w, r, userName)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -1099,8 +1000,8 @@ func (siw *ServerInterfaceWrapper) PatchApiV1UpdateUserUserName(w http.ResponseW
 	handler.ServeHTTP(w, r.WithContext(ctx))
 }
 
-// PostApiV1Users operation middleware
-func (siw *ServerInterfaceWrapper) PostApiV1Users(w http.ResponseWriter, r *http.Request) {
+// PostUsers operation middleware
+func (siw *ServerInterfaceWrapper) PostUsers(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	var err error
@@ -1108,7 +1009,7 @@ func (siw *ServerInterfaceWrapper) PostApiV1Users(w http.ResponseWriter, r *http
 	ctx = context.WithValue(ctx, BearerAuthScopes, []string{})
 
 	// Parameter object where we will unmarshal all parameters from the context
-	var params PostApiV1UsersParams
+	var params PostUsersParams
 
 	// ------------- Optional query parameter "offset" -------------
 
@@ -1127,7 +1028,7 @@ func (siw *ServerInterfaceWrapper) PostApiV1Users(w http.ResponseWriter, r *http
 	}
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PostApiV1Users(w, r, params)
+		siw.Handler.PostUsers(w, r, params)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -1251,55 +1152,49 @@ func HandlerWithOptions(si ServerInterface, options ChiServerOptions) http.Handl
 	}
 
 	r.Group(func(r chi.Router) {
-		r.Post(options.BaseURL+"/api/v1/accounts", wrapper.PostApiV1Accounts)
+		r.Post(options.BaseURL+"/accounts", wrapper.PostAccounts)
 	})
 	r.Group(func(r chi.Router) {
-		r.Get(options.BaseURL+"/api/v1/accounts/group_memberships", wrapper.GetApiV1AccountsGroupMemberships)
+		r.Get(options.BaseURL+"/accounts/group_memberships", wrapper.GetAccountsGroupMemberships)
 	})
 	r.Group(func(r chi.Router) {
-		r.Get(options.BaseURL+"/api/v1/accounts/role_memberships", wrapper.GetApiV1AccountsRoleMemberships)
+		r.Get(options.BaseURL+"/accounts/role_memberships", wrapper.GetAccountsRoleMemberships)
 	})
 	r.Group(func(r chi.Router) {
-		r.Put(options.BaseURL+"/api/v1/changePassword", wrapper.PutApiV1ChangePassword)
+		r.Put(options.BaseURL+"/changePassword", wrapper.PutChangePassword)
 	})
 	r.Group(func(r chi.Router) {
-		r.Post(options.BaseURL+"/api/v1/createAccount", wrapper.PostApiV1CreateAccount)
+		r.Post(options.BaseURL+"/createAccount", wrapper.PostCreateAccount)
 	})
 	r.Group(func(r chi.Router) {
-		r.Put(options.BaseURL+"/api/v1/entitlement/group/addAccess", wrapper.PutApiV1EntitlementGroupAddAccess)
+		r.Put(options.BaseURL+"/entitlement/group/addAccess", wrapper.PutEntitlementgroups)
 	})
 	r.Group(func(r chi.Router) {
-		r.Put(options.BaseURL+"/api/v1/entitlement/group/removeAccess", wrapper.PutApiV1EntitlementGroupRemoveAccess)
+		r.Put(options.BaseURL+"/entitlement/group/removeAccess", wrapper.PutEntitlementGroupRemoveAccess)
 	})
 	r.Group(func(r chi.Router) {
-		r.Put(options.BaseURL+"/api/v1/entitlement/role/addAccess", wrapper.PutApiV1EntitlementRoleAddAccess)
+		r.Put(options.BaseURL+"/entitlement/role/addAccess", wrapper.PutEntitlementRoleAddAccess)
 	})
 	r.Group(func(r chi.Router) {
-		r.Put(options.BaseURL+"/api/v1/entitlement/role/removeAccess", wrapper.PutApiV1EntitlementRoleRemoveAccess)
+		r.Put(options.BaseURL+"/entitlement/role/removeAccess", wrapper.PutEntitlementRoleRemoveAccess)
 	})
 	r.Group(func(r chi.Router) {
-		r.Post(options.BaseURL+"/api/v1/entitlements/groups", wrapper.PostApiV1EntitlementsGroups)
+		r.Post(options.BaseURL+"/entitlements/groups", wrapper.PostEntitlementsGroups)
 	})
 	r.Group(func(r chi.Router) {
-		r.Post(options.BaseURL+"/api/v1/entitlements/roles", wrapper.PostApiV1EntitlementsRoles)
+		r.Post(options.BaseURL+"/entitlements/roles", wrapper.PostEntitlementsRoles)
 	})
 	r.Group(func(r chi.Router) {
-		r.Delete(options.BaseURL+"/api/v1/removeAccount/{accountID}", wrapper.DeleteApiV1RemoveAccountAccountID)
+		r.Delete(options.BaseURL+"/removeAccount/{accountID}", wrapper.DeleteRemoveAccount)
 	})
 	r.Group(func(r chi.Router) {
-		r.Patch(options.BaseURL+"/api/v1/updateAccount/{accountID1}", wrapper.PatchApiV1UpdateAccountAccountID1)
+		r.Patch(options.BaseURL+"/updateAccount/{accountID}", wrapper.PatchUpdateAccount)
 	})
 	r.Group(func(r chi.Router) {
-		r.Patch(options.BaseURL+"/api/v1/updateAccount/{accountID2}", wrapper.PatchApiV1UpdateAccountAccountID2)
+		r.Patch(options.BaseURL+"/updateUser/{userName}", wrapper.PatchUpdateUser)
 	})
 	r.Group(func(r chi.Router) {
-		r.Patch(options.BaseURL+"/api/v1/updateAccount/{accountID3}", wrapper.PatchApiV1UpdateAccountAccountID3)
-	})
-	r.Group(func(r chi.Router) {
-		r.Patch(options.BaseURL+"/api/v1/updateUser/{userName}", wrapper.PatchApiV1UpdateUserUserName)
-	})
-	r.Group(func(r chi.Router) {
-		r.Post(options.BaseURL+"/api/v1/users", wrapper.PostApiV1Users)
+		r.Post(options.BaseURL+"/users", wrapper.PostUsers)
 	})
 
 	return r
