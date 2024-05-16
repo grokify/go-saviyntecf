@@ -102,7 +102,7 @@ type Account struct {
 // Accounts defines model for accounts.
 type Accounts struct {
 	Accounts   *[]Account `json:"accounts,omitempty"`
-	Offset     *string    `json:"offset,omitempty"`
+	Offset     *int       `json:"offset,omitempty"`
 	Pagesize   *int       `json:"pagesize,omitempty"`
 	TotalCount *int       `json:"totalCount,omitempty"`
 }
@@ -122,66 +122,69 @@ type Createaccount struct {
 	Statuskey         *string `json:"statuskey,omitempty"`
 }
 
+// Group defines model for group.
+type Group struct {
+	CUSTOMPROPERTY1   *string    `json:"CUSTOMPROPERTY1,omitempty"`
+	CUSTOMPROPERTY10  *string    `json:"CUSTOMPROPERTY10,omitempty"`
+	CUSTOMPROPERTY11  *string    `json:"CUSTOMPROPERTY11,omitempty"`
+	CUSTOMPROPERTY12  *string    `json:"CUSTOMPROPERTY12,omitempty"`
+	CUSTOMPROPERTY13  *string    `json:"CUSTOMPROPERTY13,omitempty"`
+	CUSTOMPROPERTY14  *string    `json:"CUSTOMPROPERTY14,omitempty"`
+	CUSTOMPROPERTY15  *string    `json:"CUSTOMPROPERTY15,omitempty"`
+	CUSTOMPROPERTY16  *string    `json:"CUSTOMPROPERTY16,omitempty"`
+	CUSTOMPROPERTY17  *string    `json:"CUSTOMPROPERTY17,omitempty"`
+	CUSTOMPROPERTY18  *string    `json:"CUSTOMPROPERTY18,omitempty"`
+	CUSTOMPROPERTY19  *string    `json:"CUSTOMPROPERTY19,omitempty"`
+	CUSTOMPROPERTY2   *time.Time `json:"CUSTOMPROPERTY2,omitempty"`
+	CUSTOMPROPERTY20  *string    `json:"CUSTOMPROPERTY20,omitempty"`
+	CUSTOMPROPERTY21  *string    `json:"CUSTOMPROPERTY21,omitempty"`
+	CUSTOMPROPERTY22  *string    `json:"CUSTOMPROPERTY22,omitempty"`
+	CUSTOMPROPERTY23  *string    `json:"CUSTOMPROPERTY23,omitempty"`
+	CUSTOMPROPERTY24  *string    `json:"CUSTOMPROPERTY24,omitempty"`
+	CUSTOMPROPERTY25  *string    `json:"CUSTOMPROPERTY25,omitempty"`
+	CUSTOMPROPERTY26  *string    `json:"CUSTOMPROPERTY26,omitempty"`
+	CUSTOMPROPERTY27  *string    `json:"CUSTOMPROPERTY27,omitempty"`
+	CUSTOMPROPERTY28  *string    `json:"CUSTOMPROPERTY28,omitempty"`
+	CUSTOMPROPERTY29  *string    `json:"CUSTOMPROPERTY29,omitempty"`
+	CUSTOMPROPERTY3   *time.Time `json:"CUSTOMPROPERTY3,omitempty"`
+	CUSTOMPROPERTY30  *int       `json:"CUSTOMPROPERTY30,omitempty"`
+	CUSTOMPROPERTY31  *string    `json:"CUSTOMPROPERTY31,omitempty"`
+	CUSTOMPROPERTY32  *string    `json:"CUSTOMPROPERTY32,omitempty"`
+	CUSTOMPROPERTY33  *string    `json:"CUSTOMPROPERTY33,omitempty"`
+	CUSTOMPROPERTY34  *string    `json:"CUSTOMPROPERTY34,omitempty"`
+	CUSTOMPROPERTY35  *string    `json:"CUSTOMPROPERTY35,omitempty"`
+	CUSTOMPROPERTY36  *string    `json:"CUSTOMPROPERTY36,omitempty"`
+	CUSTOMPROPERTY37  *string    `json:"CUSTOMPROPERTY37,omitempty"`
+	CUSTOMPROPERTY38  *string    `json:"CUSTOMPROPERTY38,omitempty"`
+	CUSTOMPROPERTY39  *string    `json:"CUSTOMPROPERTY39,omitempty"`
+	CUSTOMPROPERTY4   *string    `json:"CUSTOMPROPERTY4,omitempty"`
+	CUSTOMPROPERTY40  *string    `json:"CUSTOMPROPERTY40,omitempty"`
+	CUSTOMPROPERTY5   *string    `json:"CUSTOMPROPERTY5,omitempty"`
+	CUSTOMPROPERTY6   *string    `json:"CUSTOMPROPERTY6,omitempty"`
+	CUSTOMPROPERTY7   *string    `json:"CUSTOMPROPERTY7,omitempty"`
+	CUSTOMPROPERTY8   *string    `json:"CUSTOMPROPERTY8,omitempty"`
+	CUSTOMPROPERTY9   *string    `json:"CUSTOMPROPERTY9,omitempty"`
+	ChildEntitlements *struct {
+		Groups *[]struct {
+			EntitlementID *int `json:"entitlementID,omitempty"`
+		} `json:"groups,omitempty"`
+	} `json:"childEntitlements,omitempty"`
+	Description         *string   `json:"description,omitempty"`
+	Displayname         *string   `json:"displayname,omitempty"`
+	Entclass            *string   `json:"entclass,omitempty"`
+	EntitlementID       *int      `json:"entitlementID,omitempty"`
+	EntitlementGlossary *string   `json:"entitlement_glossary,omitempty"`
+	EntitlementValue    *string   `json:"entitlement_value,omitempty"`
+	Owners              *[]string `json:"owners,omitempty"`
+	Status              *string   `json:"status,omitempty"`
+}
+
 // Groups defines model for groups.
 type Groups struct {
-	Groups *[]struct {
-		CUSTOMPROPERTY1   *string    `json:"CUSTOMPROPERTY1,omitempty"`
-		CUSTOMPROPERTY10  *string    `json:"CUSTOMPROPERTY10,omitempty"`
-		CUSTOMPROPERTY11  *string    `json:"CUSTOMPROPERTY11,omitempty"`
-		CUSTOMPROPERTY12  *string    `json:"CUSTOMPROPERTY12,omitempty"`
-		CUSTOMPROPERTY13  *string    `json:"CUSTOMPROPERTY13,omitempty"`
-		CUSTOMPROPERTY14  *string    `json:"CUSTOMPROPERTY14,omitempty"`
-		CUSTOMPROPERTY15  *string    `json:"CUSTOMPROPERTY15,omitempty"`
-		CUSTOMPROPERTY16  *string    `json:"CUSTOMPROPERTY16,omitempty"`
-		CUSTOMPROPERTY17  *string    `json:"CUSTOMPROPERTY17,omitempty"`
-		CUSTOMPROPERTY18  *string    `json:"CUSTOMPROPERTY18,omitempty"`
-		CUSTOMPROPERTY19  *string    `json:"CUSTOMPROPERTY19,omitempty"`
-		CUSTOMPROPERTY2   *time.Time `json:"CUSTOMPROPERTY2,omitempty"`
-		CUSTOMPROPERTY20  *string    `json:"CUSTOMPROPERTY20,omitempty"`
-		CUSTOMPROPERTY21  *string    `json:"CUSTOMPROPERTY21,omitempty"`
-		CUSTOMPROPERTY22  *string    `json:"CUSTOMPROPERTY22,omitempty"`
-		CUSTOMPROPERTY23  *string    `json:"CUSTOMPROPERTY23,omitempty"`
-		CUSTOMPROPERTY24  *string    `json:"CUSTOMPROPERTY24,omitempty"`
-		CUSTOMPROPERTY25  *string    `json:"CUSTOMPROPERTY25,omitempty"`
-		CUSTOMPROPERTY26  *string    `json:"CUSTOMPROPERTY26,omitempty"`
-		CUSTOMPROPERTY27  *string    `json:"CUSTOMPROPERTY27,omitempty"`
-		CUSTOMPROPERTY28  *string    `json:"CUSTOMPROPERTY28,omitempty"`
-		CUSTOMPROPERTY29  *string    `json:"CUSTOMPROPERTY29,omitempty"`
-		CUSTOMPROPERTY3   *time.Time `json:"CUSTOMPROPERTY3,omitempty"`
-		CUSTOMPROPERTY30  *int       `json:"CUSTOMPROPERTY30,omitempty"`
-		CUSTOMPROPERTY31  *string    `json:"CUSTOMPROPERTY31,omitempty"`
-		CUSTOMPROPERTY32  *string    `json:"CUSTOMPROPERTY32,omitempty"`
-		CUSTOMPROPERTY33  *string    `json:"CUSTOMPROPERTY33,omitempty"`
-		CUSTOMPROPERTY34  *string    `json:"CUSTOMPROPERTY34,omitempty"`
-		CUSTOMPROPERTY35  *string    `json:"CUSTOMPROPERTY35,omitempty"`
-		CUSTOMPROPERTY36  *string    `json:"CUSTOMPROPERTY36,omitempty"`
-		CUSTOMPROPERTY37  *string    `json:"CUSTOMPROPERTY37,omitempty"`
-		CUSTOMPROPERTY38  *string    `json:"CUSTOMPROPERTY38,omitempty"`
-		CUSTOMPROPERTY39  *string    `json:"CUSTOMPROPERTY39,omitempty"`
-		CUSTOMPROPERTY4   *string    `json:"CUSTOMPROPERTY4,omitempty"`
-		CUSTOMPROPERTY40  *string    `json:"CUSTOMPROPERTY40,omitempty"`
-		CUSTOMPROPERTY5   *string    `json:"CUSTOMPROPERTY5,omitempty"`
-		CUSTOMPROPERTY6   *string    `json:"CUSTOMPROPERTY6,omitempty"`
-		CUSTOMPROPERTY7   *string    `json:"CUSTOMPROPERTY7,omitempty"`
-		CUSTOMPROPERTY8   *string    `json:"CUSTOMPROPERTY8,omitempty"`
-		CUSTOMPROPERTY9   *string    `json:"CUSTOMPROPERTY9,omitempty"`
-		ChildEntitlements *struct {
-			Groups *[]struct {
-				EntitlementID *int `json:"entitlementID,omitempty"`
-			} `json:"groups,omitempty"`
-		} `json:"childEntitlements,omitempty"`
-		Description         *string   `json:"description,omitempty"`
-		Displayname         *string   `json:"displayname,omitempty"`
-		Entclass            *string   `json:"entclass,omitempty"`
-		EntitlementID       *int      `json:"entitlementID,omitempty"`
-		EntitlementGlossary *string   `json:"entitlement_glossary,omitempty"`
-		EntitlementValue    *string   `json:"entitlement_value,omitempty"`
-		Owners              *[]string `json:"owners,omitempty"`
-		Status              *string   `json:"status,omitempty"`
-	} `json:"groups,omitempty"`
-	Offset     *string `json:"offset,omitempty"`
-	Pagesize   *int    `json:"pagesize,omitempty"`
-	TotalCount *int    `json:"totalCount,omitempty"`
+	Groups     *[]Group `json:"groups,omitempty"`
+	Offset     *int     `json:"offset,omitempty"`
+	Pagesize   *int     `json:"pagesize,omitempty"`
+	TotalCount *int     `json:"totalCount,omitempty"`
 }
 
 // Groupsmembership defines model for groupsmembership.
@@ -192,66 +195,69 @@ type Groupsmembership struct {
 	} `json:"group_memberships,omitempty"`
 }
 
+// Role defines model for role.
+type Role struct {
+	CUSTOMPROPERTY1   *string    `json:"CUSTOMPROPERTY1,omitempty"`
+	CUSTOMPROPERTY10  *string    `json:"CUSTOMPROPERTY10,omitempty"`
+	CUSTOMPROPERTY11  *string    `json:"CUSTOMPROPERTY11,omitempty"`
+	CUSTOMPROPERTY12  *string    `json:"CUSTOMPROPERTY12,omitempty"`
+	CUSTOMPROPERTY13  *string    `json:"CUSTOMPROPERTY13,omitempty"`
+	CUSTOMPROPERTY14  *string    `json:"CUSTOMPROPERTY14,omitempty"`
+	CUSTOMPROPERTY15  *string    `json:"CUSTOMPROPERTY15,omitempty"`
+	CUSTOMPROPERTY16  *string    `json:"CUSTOMPROPERTY16,omitempty"`
+	CUSTOMPROPERTY17  *string    `json:"CUSTOMPROPERTY17,omitempty"`
+	CUSTOMPROPERTY18  *string    `json:"CUSTOMPROPERTY18,omitempty"`
+	CUSTOMPROPERTY19  *string    `json:"CUSTOMPROPERTY19,omitempty"`
+	CUSTOMPROPERTY2   *time.Time `json:"CUSTOMPROPERTY2,omitempty"`
+	CUSTOMPROPERTY20  *string    `json:"CUSTOMPROPERTY20,omitempty"`
+	CUSTOMPROPERTY21  *string    `json:"CUSTOMPROPERTY21,omitempty"`
+	CUSTOMPROPERTY22  *string    `json:"CUSTOMPROPERTY22,omitempty"`
+	CUSTOMPROPERTY23  *string    `json:"CUSTOMPROPERTY23,omitempty"`
+	CUSTOMPROPERTY24  *string    `json:"CUSTOMPROPERTY24,omitempty"`
+	CUSTOMPROPERTY25  *string    `json:"CUSTOMPROPERTY25,omitempty"`
+	CUSTOMPROPERTY26  *string    `json:"CUSTOMPROPERTY26,omitempty"`
+	CUSTOMPROPERTY27  *string    `json:"CUSTOMPROPERTY27,omitempty"`
+	CUSTOMPROPERTY28  *string    `json:"CUSTOMPROPERTY28,omitempty"`
+	CUSTOMPROPERTY29  *string    `json:"CUSTOMPROPERTY29,omitempty"`
+	CUSTOMPROPERTY3   *time.Time `json:"CUSTOMPROPERTY3,omitempty"`
+	CUSTOMPROPERTY30  *int       `json:"CUSTOMPROPERTY30,omitempty"`
+	CUSTOMPROPERTY31  *string    `json:"CUSTOMPROPERTY31,omitempty"`
+	CUSTOMPROPERTY32  *string    `json:"CUSTOMPROPERTY32,omitempty"`
+	CUSTOMPROPERTY33  *string    `json:"CUSTOMPROPERTY33,omitempty"`
+	CUSTOMPROPERTY34  *string    `json:"CUSTOMPROPERTY34,omitempty"`
+	CUSTOMPROPERTY35  *string    `json:"CUSTOMPROPERTY35,omitempty"`
+	CUSTOMPROPERTY36  *string    `json:"CUSTOMPROPERTY36,omitempty"`
+	CUSTOMPROPERTY37  *string    `json:"CUSTOMPROPERTY37,omitempty"`
+	CUSTOMPROPERTY38  *string    `json:"CUSTOMPROPERTY38,omitempty"`
+	CUSTOMPROPERTY39  *string    `json:"CUSTOMPROPERTY39,omitempty"`
+	CUSTOMPROPERTY4   *string    `json:"CUSTOMPROPERTY4,omitempty"`
+	CUSTOMPROPERTY40  *string    `json:"CUSTOMPROPERTY40,omitempty"`
+	CUSTOMPROPERTY5   *string    `json:"CUSTOMPROPERTY5,omitempty"`
+	CUSTOMPROPERTY6   *string    `json:"CUSTOMPROPERTY6,omitempty"`
+	CUSTOMPROPERTY7   *string    `json:"CUSTOMPROPERTY7,omitempty"`
+	CUSTOMPROPERTY8   *string    `json:"CUSTOMPROPERTY8,omitempty"`
+	CUSTOMPROPERTY9   *string    `json:"CUSTOMPROPERTY9,omitempty"`
+	ChildEntitlements *struct {
+		Roles *[]struct {
+			EntitlementID *int `json:"entitlementID,omitempty"`
+		} `json:"roles,omitempty"`
+	} `json:"childEntitlements,omitempty"`
+	Description         *string   `json:"description,omitempty"`
+	Displayname         *string   `json:"displayname,omitempty"`
+	Entclass            *string   `json:"entclass,omitempty"`
+	EntitlementID       *int      `json:"entitlementID,omitempty"`
+	EntitlementGlossary *string   `json:"entitlement_glossary,omitempty"`
+	EntitlementValue    *string   `json:"entitlement_value,omitempty"`
+	Owners              *[]string `json:"owners,omitempty"`
+	Status              *string   `json:"status,omitempty"`
+}
+
 // Roles defines model for roles.
 type Roles struct {
-	Offset   *string `json:"offset,omitempty"`
-	Pagesize *int    `json:"pagesize,omitempty"`
-	Roles    *[]struct {
-		CUSTOMPROPERTY1   *string    `json:"CUSTOMPROPERTY1,omitempty"`
-		CUSTOMPROPERTY10  *string    `json:"CUSTOMPROPERTY10,omitempty"`
-		CUSTOMPROPERTY11  *string    `json:"CUSTOMPROPERTY11,omitempty"`
-		CUSTOMPROPERTY12  *string    `json:"CUSTOMPROPERTY12,omitempty"`
-		CUSTOMPROPERTY13  *string    `json:"CUSTOMPROPERTY13,omitempty"`
-		CUSTOMPROPERTY14  *string    `json:"CUSTOMPROPERTY14,omitempty"`
-		CUSTOMPROPERTY15  *string    `json:"CUSTOMPROPERTY15,omitempty"`
-		CUSTOMPROPERTY16  *string    `json:"CUSTOMPROPERTY16,omitempty"`
-		CUSTOMPROPERTY17  *string    `json:"CUSTOMPROPERTY17,omitempty"`
-		CUSTOMPROPERTY18  *string    `json:"CUSTOMPROPERTY18,omitempty"`
-		CUSTOMPROPERTY19  *string    `json:"CUSTOMPROPERTY19,omitempty"`
-		CUSTOMPROPERTY2   *time.Time `json:"CUSTOMPROPERTY2,omitempty"`
-		CUSTOMPROPERTY20  *string    `json:"CUSTOMPROPERTY20,omitempty"`
-		CUSTOMPROPERTY21  *string    `json:"CUSTOMPROPERTY21,omitempty"`
-		CUSTOMPROPERTY22  *string    `json:"CUSTOMPROPERTY22,omitempty"`
-		CUSTOMPROPERTY23  *string    `json:"CUSTOMPROPERTY23,omitempty"`
-		CUSTOMPROPERTY24  *string    `json:"CUSTOMPROPERTY24,omitempty"`
-		CUSTOMPROPERTY25  *string    `json:"CUSTOMPROPERTY25,omitempty"`
-		CUSTOMPROPERTY26  *string    `json:"CUSTOMPROPERTY26,omitempty"`
-		CUSTOMPROPERTY27  *string    `json:"CUSTOMPROPERTY27,omitempty"`
-		CUSTOMPROPERTY28  *string    `json:"CUSTOMPROPERTY28,omitempty"`
-		CUSTOMPROPERTY29  *string    `json:"CUSTOMPROPERTY29,omitempty"`
-		CUSTOMPROPERTY3   *time.Time `json:"CUSTOMPROPERTY3,omitempty"`
-		CUSTOMPROPERTY30  *int       `json:"CUSTOMPROPERTY30,omitempty"`
-		CUSTOMPROPERTY31  *string    `json:"CUSTOMPROPERTY31,omitempty"`
-		CUSTOMPROPERTY32  *string    `json:"CUSTOMPROPERTY32,omitempty"`
-		CUSTOMPROPERTY33  *string    `json:"CUSTOMPROPERTY33,omitempty"`
-		CUSTOMPROPERTY34  *string    `json:"CUSTOMPROPERTY34,omitempty"`
-		CUSTOMPROPERTY35  *string    `json:"CUSTOMPROPERTY35,omitempty"`
-		CUSTOMPROPERTY36  *string    `json:"CUSTOMPROPERTY36,omitempty"`
-		CUSTOMPROPERTY37  *string    `json:"CUSTOMPROPERTY37,omitempty"`
-		CUSTOMPROPERTY38  *string    `json:"CUSTOMPROPERTY38,omitempty"`
-		CUSTOMPROPERTY39  *string    `json:"CUSTOMPROPERTY39,omitempty"`
-		CUSTOMPROPERTY4   *string    `json:"CUSTOMPROPERTY4,omitempty"`
-		CUSTOMPROPERTY40  *string    `json:"CUSTOMPROPERTY40,omitempty"`
-		CUSTOMPROPERTY5   *string    `json:"CUSTOMPROPERTY5,omitempty"`
-		CUSTOMPROPERTY6   *string    `json:"CUSTOMPROPERTY6,omitempty"`
-		CUSTOMPROPERTY7   *string    `json:"CUSTOMPROPERTY7,omitempty"`
-		CUSTOMPROPERTY8   *string    `json:"CUSTOMPROPERTY8,omitempty"`
-		CUSTOMPROPERTY9   *string    `json:"CUSTOMPROPERTY9,omitempty"`
-		ChildEntitlements *struct {
-			Roles *[]struct {
-				EntitlementID *int `json:"entitlementID,omitempty"`
-			} `json:"roles,omitempty"`
-		} `json:"childEntitlements,omitempty"`
-		Description         *string   `json:"description,omitempty"`
-		Displayname         *string   `json:"displayname,omitempty"`
-		Entclass            *string   `json:"entclass,omitempty"`
-		EntitlementID       *int      `json:"entitlementID,omitempty"`
-		EntitlementGlossary *string   `json:"entitlement_glossary,omitempty"`
-		EntitlementValue    *string   `json:"entitlement_value,omitempty"`
-		Owners              *[]string `json:"owners,omitempty"`
-		Status              *string   `json:"status,omitempty"`
-	} `json:"roles,omitempty"`
-	TotalCount *int `json:"totalCount,omitempty"`
+	Offset     *int    `json:"offset,omitempty"`
+	Pagesize   *int    `json:"pagesize,omitempty"`
+	Roles      *[]Role `json:"roles,omitempty"`
+	TotalCount *int    `json:"totalCount,omitempty"`
 }
 
 // Rolesmembership defines model for rolesmembership.
@@ -276,123 +282,126 @@ type Updateuser struct {
 	Statuskey         *string `json:"statuskey,omitempty"`
 }
 
+// User defines model for user.
+type User = []struct {
+	ACCOUNTEXPIRED    *int    `json:"ACCOUNTEXPIRED,omitempty"`
+	ACCOUNTLOCKED     *int    `json:"ACCOUNTLOCKED,omitempty"`
+	CITY              *string `json:"CITY,omitempty"`
+	COMMENTS          *string `json:"COMMENTS,omitempty"`
+	COMPANYNAME       *string `json:"COMPANYNAME,omitempty"`
+	COSTCENTER        *string `json:"COSTCENTER,omitempty"`
+	COUNTRY           *string `json:"COUNTRY,omitempty"`
+	CUSTOMPROPERTY1   *string `json:"CUSTOMPROPERTY1,omitempty"`
+	CUSTOMPROPERTY10  *string `json:"CUSTOMPROPERTY10,omitempty"`
+	CUSTOMPROPERTY11  *string `json:"CUSTOMPROPERTY11,omitempty"`
+	CUSTOMPROPERTY12  *string `json:"CUSTOMPROPERTY12,omitempty"`
+	CUSTOMPROPERTY13  *string `json:"CUSTOMPROPERTY13,omitempty"`
+	CUSTOMPROPERTY14  *string `json:"CUSTOMPROPERTY14,omitempty"`
+	CUSTOMPROPERTY15  *string `json:"CUSTOMPROPERTY15,omitempty"`
+	CUSTOMPROPERTY16  *string `json:"CUSTOMPROPERTY16,omitempty"`
+	CUSTOMPROPERTY17  *string `json:"CUSTOMPROPERTY17,omitempty"`
+	CUSTOMPROPERTY18  *string `json:"CUSTOMPROPERTY18,omitempty"`
+	CUSTOMPROPERTY19  *string `json:"CUSTOMPROPERTY19,omitempty"`
+	CUSTOMPROPERTY2   *string `json:"CUSTOMPROPERTY2,omitempty"`
+	CUSTOMPROPERTY20  *string `json:"CUSTOMPROPERTY20,omitempty"`
+	CUSTOMPROPERTY21  *string `json:"CUSTOMPROPERTY21,omitempty"`
+	CUSTOMPROPERTY22  *string `json:"CUSTOMPROPERTY22,omitempty"`
+	CUSTOMPROPERTY23  *string `json:"CUSTOMPROPERTY23,omitempty"`
+	CUSTOMPROPERTY24  *string `json:"CUSTOMPROPERTY24,omitempty"`
+	CUSTOMPROPERTY25  *string `json:"CUSTOMPROPERTY25,omitempty"`
+	CUSTOMPROPERTY26  *string `json:"CUSTOMPROPERTY26,omitempty"`
+	CUSTOMPROPERTY27  *string `json:"CUSTOMPROPERTY27,omitempty"`
+	CUSTOMPROPERTY28  *string `json:"CUSTOMPROPERTY28,omitempty"`
+	CUSTOMPROPERTY29  *string `json:"CUSTOMPROPERTY29,omitempty"`
+	CUSTOMPROPERTY3   *string `json:"CUSTOMPROPERTY3,omitempty"`
+	CUSTOMPROPERTY30  *string `json:"CUSTOMPROPERTY30,omitempty"`
+	CUSTOMPROPERTY31  *string `json:"CUSTOMPROPERTY31,omitempty"`
+	CUSTOMPROPERTY32  *string `json:"CUSTOMPROPERTY32,omitempty"`
+	CUSTOMPROPERTY33  *string `json:"CUSTOMPROPERTY33,omitempty"`
+	CUSTOMPROPERTY34  *string `json:"CUSTOMPROPERTY34,omitempty"`
+	CUSTOMPROPERTY35  *string `json:"CUSTOMPROPERTY35,omitempty"`
+	CUSTOMPROPERTY36  *string `json:"CUSTOMPROPERTY36,omitempty"`
+	CUSTOMPROPERTY37  *string `json:"CUSTOMPROPERTY37,omitempty"`
+	CUSTOMPROPERTY38  *string `json:"CUSTOMPROPERTY38,omitempty"`
+	CUSTOMPROPERTY39  *string `json:"CUSTOMPROPERTY39,omitempty"`
+	CUSTOMPROPERTY4   *string `json:"CUSTOMPROPERTY4,omitempty"`
+	CUSTOMPROPERTY40  *string `json:"CUSTOMPROPERTY40,omitempty"`
+	CUSTOMPROPERTY41  *string `json:"CUSTOMPROPERTY41,omitempty"`
+	CUSTOMPROPERTY42  *string `json:"CUSTOMPROPERTY42,omitempty"`
+	CUSTOMPROPERTY43  *string `json:"CUSTOMPROPERTY43,omitempty"`
+	CUSTOMPROPERTY44  *string `json:"CUSTOMPROPERTY44,omitempty"`
+	CUSTOMPROPERTY45  *string `json:"CUSTOMPROPERTY45,omitempty"`
+	CUSTOMPROPERTY46  *string `json:"CUSTOMPROPERTY46,omitempty"`
+	CUSTOMPROPERTY47  *string `json:"CUSTOMPROPERTY47,omitempty"`
+	CUSTOMPROPERTY48  *string `json:"CUSTOMPROPERTY48,omitempty"`
+	CUSTOMPROPERTY49  *string `json:"CUSTOMPROPERTY49,omitempty"`
+	CUSTOMPROPERTY5   *string `json:"CUSTOMPROPERTY5,omitempty"`
+	CUSTOMPROPERTY50  *string `json:"CUSTOMPROPERTY50,omitempty"`
+	CUSTOMPROPERTY51  *string `json:"CUSTOMPROPERTY51,omitempty"`
+	CUSTOMPROPERTY52  *string `json:"CUSTOMPROPERTY52,omitempty"`
+	CUSTOMPROPERTY53  *string `json:"CUSTOMPROPERTY53,omitempty"`
+	CUSTOMPROPERTY54  *string `json:"CUSTOMPROPERTY54,omitempty"`
+	CUSTOMPROPERTY55  *string `json:"CUSTOMPROPERTY55,omitempty"`
+	CUSTOMPROPERTY56  *string `json:"CUSTOMPROPERTY56,omitempty"`
+	CUSTOMPROPERTY57  *string `json:"CUSTOMPROPERTY57,omitempty"`
+	CUSTOMPROPERTY58  *string `json:"CUSTOMPROPERTY58,omitempty"`
+	CUSTOMPROPERTY59  *string `json:"CUSTOMPROPERTY59,omitempty"`
+	CUSTOMPROPERTY6   *string `json:"CUSTOMPROPERTY6,omitempty"`
+	CUSTOMPROPERTY60  *string `json:"CUSTOMPROPERTY60,omitempty"`
+	CUSTOMPROPERTY61  *string `json:"CUSTOMPROPERTY61,omitempty"`
+	CUSTOMPROPERTY62  *string `json:"CUSTOMPROPERTY62,omitempty"`
+	CUSTOMPROPERTY63  *string `json:"CUSTOMPROPERTY63,omitempty"`
+	CUSTOMPROPERTY64  *string `json:"CUSTOMPROPERTY64,omitempty"`
+	CUSTOMPROPERTY65  *string `json:"CUSTOMPROPERTY65,omitempty"`
+	CUSTOMPROPERTY7   *string `json:"CUSTOMPROPERTY7,omitempty"`
+	CUSTOMPROPERTY8   *string `json:"CUSTOMPROPERTY8,omitempty"`
+	CUSTOMPROPERTY9   *string `json:"CUSTOMPROPERTY9,omitempty"`
+	DEPARTMENTNAME    *string `json:"DEPARTMENTNAME,omitempty"`
+	DEPARTMENTNUMBER  *string `json:"DEPARTMENTNUMBER,omitempty"`
+	DISPLAYNAME       *string `json:"DISPLAYNAME,omitempty"`
+	EMAIL             *string `json:"EMAIL,omitempty"`
+	EMPLOYEECLASS     *string `json:"EMPLOYEECLASS,omitempty"`
+	EMPLOYEEID        *string `json:"EMPLOYEEID,omitempty"`
+	EMPLOYEETYPE      *string `json:"EMPLOYEETYPE,omitempty"`
+	ENDDATE           *string `json:"ENDDATE,omitempty"`
+	FIRSTNAME         *string `json:"FIRSTNAME,omitempty"`
+	JOBCODE           *string `json:"JOBCODE,omitempty"`
+	JOBCODEDESC       *string `json:"JOBCODEDESC,omitempty"`
+	JOBDESCRIPTION    *string `json:"JOBDESCRIPTION,omitempty"`
+	JOBFUNCTION       *string `json:"JOB_FUNCTION,omitempty"`
+	LASTNAME          *string `json:"LASTNAME,omitempty"`
+	LEAVESTATUS       *string `json:"LEAVESTATUS,omitempty"`
+	LOCALE            *string `json:"LOCALE,omitempty"`
+	LOCATION          *string `json:"LOCATION,omitempty"`
+	LOCATIONDESC      *string `json:"LOCATIONDESC,omitempty"`
+	LOCATIONNUMBER    *string `json:"LOCATIONNUMBER,omitempty"`
+	MANAGER           *string `json:"MANAGER,omitempty"`
+	MIDDLENAME        *string `json:"MIDDLENAME,omitempty"`
+	ORGUNITID         *string `json:"ORGUNITID,omitempty"`
+	PHONENUMBER       *string `json:"PHONENUMBER,omitempty"`
+	PREFEREDFIRSTNAME *string `json:"PREFEREDFIRSTNAME,omitempty"`
+	REGION            *string `json:"REGION,omitempty"`
+	REGIONCODE        *string `json:"REGIONCODE,omitempty"`
+	SECONDARYEMAIL    *string `json:"SECONDARYEMAIL,omitempty"`
+	SECONDARYMANAGER  *string `json:"SECONDARYMANAGER,omitempty"`
+	SECONDARYPHONE    *string `json:"SECONDARYPHONE,omitempty"`
+	SITEID            *string `json:"SITEID,omitempty"`
+	STARTDATE         *string `json:"STARTDATE,omitempty"`
+	STATE             *string `json:"STATE,omitempty"`
+	STATUSKEY         *string `json:"STATUSKEY,omitempty"`
+	STREET            *string `json:"STREET,omitempty"`
+	TERMDATE          *string `json:"TERMDATE,omitempty"`
+	TITLE             *string `json:"TITLE,omitempty"`
+	UPDATEDATE        *string `json:"UPDATEDATE,omitempty"`
+	USERNAME          *string `json:"USERNAME,omitempty"`
+}
+
 // Users defines model for users.
 type Users struct {
-	Offset     *string `json:"offset,omitempty"`
+	Offset     *int    `json:"offset,omitempty"`
 	Pagesize   *int    `json:"pagesize,omitempty"`
 	TotalCount *int    `json:"totalCount,omitempty"`
-	Users      *[]struct {
-		ACCOUNTEXPIRED    *int    `json:"ACCOUNTEXPIRED,omitempty"`
-		ACCOUNTLOCKED     *int    `json:"ACCOUNTLOCKED,omitempty"`
-		CITY              *string `json:"CITY,omitempty"`
-		COMMENTS          *string `json:"COMMENTS,omitempty"`
-		COMPANYNAME       *string `json:"COMPANYNAME,omitempty"`
-		COSTCENTER        *string `json:"COSTCENTER,omitempty"`
-		COUNTRY           *string `json:"COUNTRY,omitempty"`
-		CUSTOMPROPERTY1   *string `json:"CUSTOMPROPERTY1,omitempty"`
-		CUSTOMPROPERTY10  *string `json:"CUSTOMPROPERTY10,omitempty"`
-		CUSTOMPROPERTY11  *string `json:"CUSTOMPROPERTY11,omitempty"`
-		CUSTOMPROPERTY12  *string `json:"CUSTOMPROPERTY12,omitempty"`
-		CUSTOMPROPERTY13  *string `json:"CUSTOMPROPERTY13,omitempty"`
-		CUSTOMPROPERTY14  *string `json:"CUSTOMPROPERTY14,omitempty"`
-		CUSTOMPROPERTY15  *string `json:"CUSTOMPROPERTY15,omitempty"`
-		CUSTOMPROPERTY16  *string `json:"CUSTOMPROPERTY16,omitempty"`
-		CUSTOMPROPERTY17  *string `json:"CUSTOMPROPERTY17,omitempty"`
-		CUSTOMPROPERTY18  *string `json:"CUSTOMPROPERTY18,omitempty"`
-		CUSTOMPROPERTY19  *string `json:"CUSTOMPROPERTY19,omitempty"`
-		CUSTOMPROPERTY2   *string `json:"CUSTOMPROPERTY2,omitempty"`
-		CUSTOMPROPERTY20  *string `json:"CUSTOMPROPERTY20,omitempty"`
-		CUSTOMPROPERTY21  *string `json:"CUSTOMPROPERTY21,omitempty"`
-		CUSTOMPROPERTY22  *string `json:"CUSTOMPROPERTY22,omitempty"`
-		CUSTOMPROPERTY23  *string `json:"CUSTOMPROPERTY23,omitempty"`
-		CUSTOMPROPERTY24  *string `json:"CUSTOMPROPERTY24,omitempty"`
-		CUSTOMPROPERTY25  *string `json:"CUSTOMPROPERTY25,omitempty"`
-		CUSTOMPROPERTY26  *string `json:"CUSTOMPROPERTY26,omitempty"`
-		CUSTOMPROPERTY27  *string `json:"CUSTOMPROPERTY27,omitempty"`
-		CUSTOMPROPERTY28  *string `json:"CUSTOMPROPERTY28,omitempty"`
-		CUSTOMPROPERTY29  *string `json:"CUSTOMPROPERTY29,omitempty"`
-		CUSTOMPROPERTY3   *string `json:"CUSTOMPROPERTY3,omitempty"`
-		CUSTOMPROPERTY30  *string `json:"CUSTOMPROPERTY30,omitempty"`
-		CUSTOMPROPERTY31  *string `json:"CUSTOMPROPERTY31,omitempty"`
-		CUSTOMPROPERTY32  *string `json:"CUSTOMPROPERTY32,omitempty"`
-		CUSTOMPROPERTY33  *string `json:"CUSTOMPROPERTY33,omitempty"`
-		CUSTOMPROPERTY34  *string `json:"CUSTOMPROPERTY34,omitempty"`
-		CUSTOMPROPERTY35  *string `json:"CUSTOMPROPERTY35,omitempty"`
-		CUSTOMPROPERTY36  *string `json:"CUSTOMPROPERTY36,omitempty"`
-		CUSTOMPROPERTY37  *string `json:"CUSTOMPROPERTY37,omitempty"`
-		CUSTOMPROPERTY38  *string `json:"CUSTOMPROPERTY38,omitempty"`
-		CUSTOMPROPERTY39  *string `json:"CUSTOMPROPERTY39,omitempty"`
-		CUSTOMPROPERTY4   *string `json:"CUSTOMPROPERTY4,omitempty"`
-		CUSTOMPROPERTY40  *string `json:"CUSTOMPROPERTY40,omitempty"`
-		CUSTOMPROPERTY41  *string `json:"CUSTOMPROPERTY41,omitempty"`
-		CUSTOMPROPERTY42  *string `json:"CUSTOMPROPERTY42,omitempty"`
-		CUSTOMPROPERTY43  *string `json:"CUSTOMPROPERTY43,omitempty"`
-		CUSTOMPROPERTY44  *string `json:"CUSTOMPROPERTY44,omitempty"`
-		CUSTOMPROPERTY45  *string `json:"CUSTOMPROPERTY45,omitempty"`
-		CUSTOMPROPERTY46  *string `json:"CUSTOMPROPERTY46,omitempty"`
-		CUSTOMPROPERTY47  *string `json:"CUSTOMPROPERTY47,omitempty"`
-		CUSTOMPROPERTY48  *string `json:"CUSTOMPROPERTY48,omitempty"`
-		CUSTOMPROPERTY49  *string `json:"CUSTOMPROPERTY49,omitempty"`
-		CUSTOMPROPERTY5   *string `json:"CUSTOMPROPERTY5,omitempty"`
-		CUSTOMPROPERTY50  *string `json:"CUSTOMPROPERTY50,omitempty"`
-		CUSTOMPROPERTY51  *string `json:"CUSTOMPROPERTY51,omitempty"`
-		CUSTOMPROPERTY52  *string `json:"CUSTOMPROPERTY52,omitempty"`
-		CUSTOMPROPERTY53  *string `json:"CUSTOMPROPERTY53,omitempty"`
-		CUSTOMPROPERTY54  *string `json:"CUSTOMPROPERTY54,omitempty"`
-		CUSTOMPROPERTY55  *string `json:"CUSTOMPROPERTY55,omitempty"`
-		CUSTOMPROPERTY56  *string `json:"CUSTOMPROPERTY56,omitempty"`
-		CUSTOMPROPERTY57  *string `json:"CUSTOMPROPERTY57,omitempty"`
-		CUSTOMPROPERTY58  *string `json:"CUSTOMPROPERTY58,omitempty"`
-		CUSTOMPROPERTY59  *string `json:"CUSTOMPROPERTY59,omitempty"`
-		CUSTOMPROPERTY6   *string `json:"CUSTOMPROPERTY6,omitempty"`
-		CUSTOMPROPERTY60  *string `json:"CUSTOMPROPERTY60,omitempty"`
-		CUSTOMPROPERTY61  *string `json:"CUSTOMPROPERTY61,omitempty"`
-		CUSTOMPROPERTY62  *string `json:"CUSTOMPROPERTY62,omitempty"`
-		CUSTOMPROPERTY63  *string `json:"CUSTOMPROPERTY63,omitempty"`
-		CUSTOMPROPERTY64  *string `json:"CUSTOMPROPERTY64,omitempty"`
-		CUSTOMPROPERTY65  *string `json:"CUSTOMPROPERTY65,omitempty"`
-		CUSTOMPROPERTY7   *string `json:"CUSTOMPROPERTY7,omitempty"`
-		CUSTOMPROPERTY8   *string `json:"CUSTOMPROPERTY8,omitempty"`
-		CUSTOMPROPERTY9   *string `json:"CUSTOMPROPERTY9,omitempty"`
-		DEPARTMENTNAME    *string `json:"DEPARTMENTNAME,omitempty"`
-		DEPARTMENTNUMBER  *string `json:"DEPARTMENTNUMBER,omitempty"`
-		DISPLAYNAME       *string `json:"DISPLAYNAME,omitempty"`
-		EMAIL             *string `json:"EMAIL,omitempty"`
-		EMPLOYEECLASS     *string `json:"EMPLOYEECLASS,omitempty"`
-		EMPLOYEEID        *string `json:"EMPLOYEEID,omitempty"`
-		EMPLOYEETYPE      *string `json:"EMPLOYEETYPE,omitempty"`
-		ENDDATE           *string `json:"ENDDATE,omitempty"`
-		FIRSTNAME         *string `json:"FIRSTNAME,omitempty"`
-		JOBCODE           *string `json:"JOBCODE,omitempty"`
-		JOBCODEDESC       *string `json:"JOBCODEDESC,omitempty"`
-		JOBDESCRIPTION    *string `json:"JOBDESCRIPTION,omitempty"`
-		JOBFUNCTION       *string `json:"JOB_FUNCTION,omitempty"`
-		LASTNAME          *string `json:"LASTNAME,omitempty"`
-		LEAVESTATUS       *string `json:"LEAVESTATUS,omitempty"`
-		LOCALE            *string `json:"LOCALE,omitempty"`
-		LOCATION          *string `json:"LOCATION,omitempty"`
-		LOCATIONDESC      *string `json:"LOCATIONDESC,omitempty"`
-		LOCATIONNUMBER    *string `json:"LOCATIONNUMBER,omitempty"`
-		MANAGER           *string `json:"MANAGER,omitempty"`
-		MIDDLENAME        *string `json:"MIDDLENAME,omitempty"`
-		ORGUNITID         *string `json:"ORGUNITID,omitempty"`
-		PHONENUMBER       *string `json:"PHONENUMBER,omitempty"`
-		PREFEREDFIRSTNAME *string `json:"PREFEREDFIRSTNAME,omitempty"`
-		REGION            *string `json:"REGION,omitempty"`
-		REGIONCODE        *string `json:"REGIONCODE,omitempty"`
-		SECONDARYEMAIL    *string `json:"SECONDARYEMAIL,omitempty"`
-		SECONDARYMANAGER  *string `json:"SECONDARYMANAGER,omitempty"`
-		SECONDARYPHONE    *string `json:"SECONDARYPHONE,omitempty"`
-		SITEID            *string `json:"SITEID,omitempty"`
-		STARTDATE         *string `json:"STARTDATE,omitempty"`
-		STATE             *string `json:"STATE,omitempty"`
-		STATUSKEY         *string `json:"STATUSKEY,omitempty"`
-		STREET            *string `json:"STREET,omitempty"`
-		TERMDATE          *string `json:"TERMDATE,omitempty"`
-		TITLE             *string `json:"TITLE,omitempty"`
-		UPDATEDATE        *string `json:"UPDATEDATE,omitempty"`
-		USERNAME          *string `json:"USERNAME,omitempty"`
-	} `json:"users,omitempty"`
+	Users      *[]User `json:"users,omitempty"`
 }
 
 // PostAccountsJSONBody defines parameters for PostAccounts.
