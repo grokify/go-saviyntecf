@@ -535,7 +535,7 @@ components:
             type: integer
           pagesize:
             type: integer
-          totalCount:
+          totalcount:
             type: integer
           users:
             type: array
@@ -544,7 +544,7 @@ components:
       example:
         offset: 0
         pagesize: 3
-        totalCount: 3
+        totalcount: 3
         users:
           - ACCOUNTEXPIRED: "0"
             ACCOUNTLOCKED: "0"
@@ -1108,7 +1108,7 @@ components:
             type: integer
           pagesize:
             type: integer
-          totalCount:
+          totalcount:
             type: integer
           accounts:
             type: array
@@ -1117,7 +1117,7 @@ components:
       example:    
         offset: 0
         pagesize: 3
-        totalCount: 3
+        totalcount: 3
         accounts:
           - ACCOUNTID: "15553759289491"
             ACCOUNTCLASS: "NULL"
@@ -1519,7 +1519,7 @@ components:
             type: integer
           pagesize:
             type: integer
-          totalCount:
+          totalcount:
             type: integer
           roles:
             type: array
@@ -1528,7 +1528,7 @@ components:
       example:
         offset: 0
         pagesize: 4
-        totalCount: 4
+        totalcount: 4
         roles:
           - entitlementID: 15553692240529
             entitlement_value: Light agent
@@ -1837,16 +1837,18 @@ components:
           type: object
           properties:
             roles:
-              type: array
-              items:
-                type: object
-                properties:
-                  entitlementID:
-                    type: integer
+              $ref: '#/components/schemas/childroles'  
         owners:
           type: array
           items:
             type: string
+    childroles:
+      type: array
+      items:
+        type: object
+        properties:
+          entitlementID:
+            type: integer
     groups:
       type: object
       properties:
@@ -1854,7 +1856,7 @@ components:
             type: integer
           pagesize:
             type: integer
-          totalCount:
+          totalcount:
             type: integer
           groups:
             type: array
@@ -1863,7 +1865,7 @@ components:
       example:
         offset: 0
         pagesize: 3
-        totalCount: 3
+        totalcount: 3
         groups:
           - entitlementID: 15553798176145
             entitlement_value: Admin Users
@@ -2119,16 +2121,18 @@ components:
           type: object
           properties:
             groups:
-              type: array
-              items:
-                type: object
-                properties:
-                  entitlementID:
-                    type: integer
+              $ref: '#/components/schemas/childgroups'  
         owners:
           type: array
           items:
             type: string
+    childgroups:
+      type: array
+      items:
+        type: object
+        properties:
+          entitlementID:
+            type: integer
     groupsmembership:
       type: object
       properties:     

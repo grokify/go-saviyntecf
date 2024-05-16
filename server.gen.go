@@ -104,7 +104,17 @@ type Accounts struct {
 	Accounts   *[]Account `json:"accounts,omitempty"`
 	Offset     *int       `json:"offset,omitempty"`
 	Pagesize   *int       `json:"pagesize,omitempty"`
-	TotalCount *int       `json:"totalCount,omitempty"`
+	Totalcount *int       `json:"totalcount,omitempty"`
+}
+
+// Childgroups defines model for childgroups.
+type Childgroups = []struct {
+	EntitlementID *int `json:"entitlementID,omitempty"`
+}
+
+// Childroles defines model for childroles.
+type Childroles = []struct {
+	EntitlementID *int `json:"entitlementID,omitempty"`
 }
 
 // Createaccount defines model for createaccount.
@@ -165,9 +175,7 @@ type Group struct {
 	CUSTOMPROPERTY8   *string    `json:"CUSTOMPROPERTY8,omitempty"`
 	CUSTOMPROPERTY9   *string    `json:"CUSTOMPROPERTY9,omitempty"`
 	ChildEntitlements *struct {
-		Groups *[]struct {
-			EntitlementID *int `json:"entitlementID,omitempty"`
-		} `json:"groups,omitempty"`
+		Groups *Childgroups `json:"groups,omitempty"`
 	} `json:"childEntitlements,omitempty"`
 	Description         *string   `json:"description,omitempty"`
 	Displayname         *string   `json:"displayname,omitempty"`
@@ -184,7 +192,7 @@ type Groups struct {
 	Groups     *[]Group `json:"groups,omitempty"`
 	Offset     *int     `json:"offset,omitempty"`
 	Pagesize   *int     `json:"pagesize,omitempty"`
-	TotalCount *int     `json:"totalCount,omitempty"`
+	Totalcount *int     `json:"totalcount,omitempty"`
 }
 
 // Groupsmembership defines model for groupsmembership.
@@ -238,9 +246,7 @@ type Role struct {
 	CUSTOMPROPERTY8   *string    `json:"CUSTOMPROPERTY8,omitempty"`
 	CUSTOMPROPERTY9   *string    `json:"CUSTOMPROPERTY9,omitempty"`
 	ChildEntitlements *struct {
-		Roles *[]struct {
-			EntitlementID *int `json:"entitlementID,omitempty"`
-		} `json:"roles,omitempty"`
+		Roles *Childroles `json:"roles,omitempty"`
 	} `json:"childEntitlements,omitempty"`
 	Description         *string   `json:"description,omitempty"`
 	Displayname         *string   `json:"displayname,omitempty"`
@@ -257,7 +263,7 @@ type Roles struct {
 	Offset     *int    `json:"offset,omitempty"`
 	Pagesize   *int    `json:"pagesize,omitempty"`
 	Roles      *[]Role `json:"roles,omitempty"`
-	TotalCount *int    `json:"totalCount,omitempty"`
+	Totalcount *int    `json:"totalcount,omitempty"`
 }
 
 // Rolesmembership defines model for rolesmembership.
@@ -400,7 +406,7 @@ type User = []struct {
 type Users struct {
 	Offset     *int    `json:"offset,omitempty"`
 	Pagesize   *int    `json:"pagesize,omitempty"`
-	TotalCount *int    `json:"totalCount,omitempty"`
+	Totalcount *int    `json:"totalcount,omitempty"`
 	Users      *[]User `json:"users,omitempty"`
 }
 
