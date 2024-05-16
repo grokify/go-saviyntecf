@@ -13,6 +13,8 @@ It is built with [`oapi-codegen`](https://github.com/deepmap/oapi-codegen).
 
 To use `go-saviyntecf` to create a connector, see [`go-saviyntecf-tutorial`](https://github.com/grokify/go-saviyntecf-tutorial).
 
+To implement a connector, implement the functions listed here in [`ServerInterface`](https://pkg.go.dev/github.com/grokify/go-saviyntecf#ServerInterface).
+
 ## Rebuild
 
 To rebuild this module using an updated OpenAPI spec, do the following:
