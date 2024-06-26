@@ -4,7 +4,7 @@ go 1.22.2
 
 require (
 	github.com/deepmap/oapi-codegen/v2 v2.2.0
-	github.com/go-chi/chi/v5 v5.0.12
+	github.com/go-chi/chi/v5 v5.0.14
 	github.com/oapi-codegen/runtime v1.1.1
 )
 
