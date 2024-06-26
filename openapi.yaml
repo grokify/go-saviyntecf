@@ -65,6 +65,8 @@ paths:
       tags :
         - Account Import
       summary: This API returns the list of accounts
+      description: >
+        **Note**: The API response should map Account Status in target application to EIC Account Attribute CUSTOMPROPERTY11.
       operationId: post-accounts
       parameters:
         - in: query
@@ -212,7 +214,7 @@ paths:
           description: Failure in fetching account role association
   /updateUser/{userName}:
     patch:
-      operationId: patch-updateUser
+      operationId: patchUpdateUser
       tags :
         - User Provisioning
       summary: This API updates a user
@@ -245,7 +247,7 @@ paths:
           description: Failure in user update
   /createAccount:
     post:
-      operationId: post-createAccount
+      operationId: postCreateAccount
       tags :
         - Account Provisioning
       summary: This API creates an account
@@ -328,7 +330,7 @@ paths:
           description: Failure response
   /removeAccount/{accountID}:
     delete:
-      operationId: delete-removeAccount
+      operationId: deleteRemoveAccount
       tags :
         - Account Provisioning
       summary: This API deletes an account
@@ -1125,7 +1127,7 @@ components:
             COMMENTS: "NULL"
             CUSTOMPROPERTY1: "Neil Sharma"
             CUSTOMPROPERTY10: "NULL"
-            CUSTOMPROPERTY11: "NULL"
+            CUSTOMPROPERTY11: "Disabled"
             CUSTOMPROPERTY12: "NULL"
             CUSTOMPROPERTY13: "NULL"
             CUSTOMPROPERTY14: "52837161b68f41ad996d558406ee4a6d"
@@ -1192,7 +1194,6 @@ components:
             NAME: "nsharma"
             PASSWORDCHANGESTATUS: "NULL"
             PASSWORDLOCKDATE: "NULL"
-            STATUS: 1
             UPDATEDATE: "NULL"
             VALIDFROM: "NULL"
             VALIDTHROUGH: "NULL"
@@ -1211,7 +1212,7 @@ components:
             CUSTOMPROPERTY8: "NULL"
             CUSTOMPROPERTY9: "NULL"
             CUSTOMPROPERTY10: "NULL"
-            CUSTOMPROPERTY11: "NULL"
+            CUSTOMPROPERTY11: "Enabled"
             CUSTOMPROPERTY12: "NULL"
             CUSTOMPROPERTY13: "NULL"
             CUSTOMPROPERTY14: "0d32ccd079004a1c8954caf934f220d6"
@@ -1270,7 +1271,6 @@ components:
             NAME: "mchoudhary"
             PASSWORDCHANGESTATUS: "NULL"
             PASSWORDLOCKDATE: "NULL"
-            STATUS: 1
             UPDATEDATE: "NULL"
             VALIDFROM: "NULL"
             VALIDTHROUGH: "NULL"
@@ -1289,7 +1289,7 @@ components:
             CUSTOMPROPERTY8: "NULL"
             CUSTOMPROPERTY9: "NULL"
             CUSTOMPROPERTY10: "NULL"
-            CUSTOMPROPERTY11: "NULL"
+            CUSTOMPROPERTY11: "Enabled"
             CUSTOMPROPERTY12: "NULL"
             CUSTOMPROPERTY13: "NULL"
             CUSTOMPROPERTY14: "3aa5550b7fe348b98d7b5741afc65534"
@@ -1348,7 +1348,6 @@ components:
             NAME: "lprasad"
             PASSWORDCHANGESTATUS: "NULL"
             PASSWORDLOCKDATE: "NULL"
-            STATUS: 1
             UPDATEDATE: "NULL"
             VALIDFROM: "NULL"
             VALIDTHROUGH: "NULL"
