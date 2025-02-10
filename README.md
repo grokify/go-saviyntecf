@@ -1,6 +1,7 @@
 # Saviynt External Connector Framework (ECF) in Go
 
 [![Build Status][build-status-svg]][build-status-url]
+[![Lint Status][lint-status-svg]][lint-status-url]
 [![Go Report Card][goreport-svg]][goreport-url]
 [![Docs][docs-godoc-svg]][docs-godoc-url]
 [![License][license-svg]][license-url]
@@ -36,6 +37,8 @@ For more information on `oapi-codegen`, see the following:
  [used-by-url]: https://sourcegraph.com/github.com/grokify/go-saviyntecf?badge
  [build-status-svg]: https://github.com/grokify/go-saviyntecf/workflows/test/badge.svg
  [build-status-url]: https://github.com/grokify/go-saviyntecf/actions/workflows/test.yaml
+ [lint-status-svg]: https://github.com/grokify/go-saviyntecf/workflows/lint/badge.svg
+ [lint-status-url]: https://github.com/grokify/go-saviyntecf/actions/workflows/lint.yaml
  [goreport-svg]: https://goreportcard.com/badge/github.com/grokify/go-saviyntecf
  [goreport-url]: https://goreportcard.com/report/github.com/grokify/go-saviyntecf
  [codeclimate-status-svg]: https://codeclimate.com/github/grokify/go-saviyntecf/badges/gpa.svg
